@@ -1,0 +1,13 @@
+@use '@assets/styles/_main.sass' as *;
+@use '@assets/styles/_mixins.scss' as *;
+@use '@assets/styles/_variables.scss' as *;
+
+.wrapper {
+	padding-top: rem(30);
+	position: relative;
+}
+.prevButton,
+.nextButton {
+	@include sliderButtons;
+	background-color: rgba($blackColor, 0.1);
+}

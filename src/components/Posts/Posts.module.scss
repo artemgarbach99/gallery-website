@@ -1,0 +1,22 @@
+@use '@assets/styles/_main.sass' as *;
+@use '@assets/styles/_mixins.scss' as *;
+@use '@assets/styles/_variables.scss' as *;
+
+.wrap {
+	padding-top: rem(60);
+}
+.top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.navigation {
+	display: flex;
+	align-items: center;
+	gap: rem(10);
+}
+.title {
+	font-family: $Jura;
+	font-weight: 700;
+	text-transform: uppercase;
+}

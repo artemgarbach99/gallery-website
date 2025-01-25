@@ -1,0 +1,48 @@
+@use 'sass:math';
+@use 'null';
+@use 'mixins';
+@use 'variables' as *;
+@use 'global.module.scss' as global;
+@use '_main.sass' as *;
+
+body {
+	font-family: $fontFamily;
+	height: 100%;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	min-height: 100%;
+}
+
+.green {
+	color: global.$colorTest;
+	font-weight: 700;
+}
+
+.prev,
+.next {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+	width: rem(40);
+	height: rem(40);
+	background-color: $whiteColor;
+	border-radius: rem(12);
+	z-index: 2;
+	color: $blackColor;
+	&.swiper-button-disabled {
+		color: rgba($blackColor, 0.5);
+	}
+}
+.prev {
+	left: rem(10);
+}
+.next {
+	right: rem(10);
+}

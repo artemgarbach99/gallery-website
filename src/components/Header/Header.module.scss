@@ -1,0 +1,67 @@
+@use '@assets/styles/_mixins.scss' as *;
+@use '@assets/styles/_variables.scss' as *;
+@use '@assets/styles/_main.sass' as *;
+
+.header {
+	padding: rem(15) 0;
+	box-shadow: 0px 1px 5px $boxShadowColor;
+}
+.body {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.left {
+	display: flex;
+	align-items: center;
+	gap: rem(70);
+}
+.logo {
+	display: flex;
+	gap: rem(10);
+	& img {
+		width: rem(40);
+		height: auto;
+		object-fit: contain;
+	}
+}
+.logoName {
+	display: flex;
+	align-items: center;
+	font-family: $Jura;
+	font-size: rem(16);
+	line-height: 1;
+	text-transform: uppercase;
+	font-weight: 700;
+}
+.right {
+	display: flex;
+	align-items: center;
+	gap: rem(30);
+}
+.favorite {
+	@include box-shadow($boxShadowColor);
+	width: rem(48);
+	height: rem(48);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: $greyColor;
+	border-radius: rem(3);
+	position: relative;
+}
+.count {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	width: rem(20);
+	height: rem(20);
+	top: rem(-5);
+	right: rem(-5);
+	background-color: $redColor;
+	color: $whiteColor;
+	border-radius: rem(3);
+	font-size: rem(14);
+	font-weight: 500;
+}

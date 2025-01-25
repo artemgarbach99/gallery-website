@@ -1,0 +1,18 @@
+@use '_main.sass' as *;
+
+// цвета
+$greenColor: #56b280;
+$greyColor: #f5f5f5;
+$whiteColor: #ffffff;
+$blackColor: #3e3232;
+$boxShadowColor: #898989;
+$redColor: #f81539;
+$fontFamily: 'Plus Jakarta Sans';
+$JosefinSans: 'Josefin Sans';
+$Jura: 'Jura';
+// адаптив
+$pc: em($containerWidth);
+$bigTablet: em(1080);
+$tablet: em(991.98);
+$mobile: em(767.98);
+$mobileSmall: em(479.98);

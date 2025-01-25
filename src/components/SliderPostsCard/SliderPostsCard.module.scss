@@ -1,0 +1,76 @@
+@use '@assets/styles/_main.sass' as *;
+@use '@assets/styles/_mixins.scss' as *;
+@use '@assets/styles/_variables.scss' as *;
+
+.card {
+	display: flex;
+	flex-direction: column;
+	gap: rem(10);
+	padding: rem(10);
+	border-radius: rem(12);
+	border: 1px solid rgba($boxShadowColor, 0.3);
+	overflow: hidden;
+}
+.image {
+	@include ibg;
+	padding-bottom: percent(200, 310);
+	border-radius: rem(12);
+	overflow: hidden;
+}
+.block {
+	display: flex;
+	flex-direction: column;
+	gap: rem(10);
+	flex: auto;
+}
+.title {
+	display: flex;
+	align-items: center;
+}
+.description {
+	flex: auto;
+	color: rgba($blackColor, 0.7);
+}
+.user {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: rem(14);
+	background-color: $greyColor;
+	border-radius: rem(12);
+}
+.wrap {
+	display: flex;
+	align-items: center;
+	gap: rem(10);
+}
+.icon {
+	flex: 0 0 rem(44);
+	width: rem(44);
+	height: rem(44);
+	border-radius: rem(12);
+	overflow: hidden;
+	& img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+.content {
+	display: flex;
+	flex-direction: column;
+	gap: rem(5);
+}
+.name {
+	font-size: rem(14);
+	line-height: 1.3;
+	font-weight: 500;
+}
+.data {
+	font-size: rem(12);
+	line-height: 1.2;
+	color: rgba($blackColor, 0.7);
+}
+.favorite {
+	color: rgba($blackColor, 0.5);
+}

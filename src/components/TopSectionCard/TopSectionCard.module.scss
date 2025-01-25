@@ -1,0 +1,50 @@
+@use '@assets/styles/_main.sass' as *;
+@use '@assets/styles/_mixins.scss' as *;
+@use '@assets/styles/_variables.scss' as *;
+.card {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	border-radius: rem(12);
+	overflow: hidden;
+	border: 1px solid rgba($blackColor, 0.5);
+}
+.content {
+	display: flex;
+	flex-direction: column;
+	gap: rem(10);
+	position: absolute;
+	width: 100%;
+	height: auto;
+	bottom: 0;
+	left: 0;
+	padding: rem(10);
+}
+.wrap {
+	display: flex;
+	flex-direction: column;
+	gap: rem(10);
+	padding: rem(15);
+	background-color: rgba($whiteColor, 0.75);
+	border-radius: rem(12);
+}
+.image {
+	@include ibg;
+	padding-bottom: percent(450, 310);
+}
+.imageSlide {
+	@include ibg;
+	padding-bottom: percent(450, 640);
+}
+.title {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2; /* Ограничение текста двумя строками */
+	overflow: hidden;
+}
+.description {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2; /* Ограничение текста двумя строками */
+	overflow: hidden;
+}

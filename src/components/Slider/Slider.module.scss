@@ -1,0 +1,59 @@
+@use '@assets/styles/_main.sass' as *;
+@use '@assets/styles/_mixins.scss' as *;
+@use '@assets/styles/_variables.scss' as *;
+
+.wrapper {
+	width: 50%;
+	border: 1px solid rgba($blackColor, 0.5);
+	border-radius: rem(12);
+	overflow: hidden;
+	position: relative;
+}
+
+.sliderCards {
+	// width: percent(640, 1300);
+}
+.pagination {
+	display: flex;
+	align-items: center;
+	gap: rem(5);
+	position: absolute;
+	bottom: rem(15);
+	right: rem(15);
+	z-index: 2;
+	& .swiper-pagination-bullet {
+		background-color: rgba($whiteColor, 0.5);
+		width: rem(10);
+		height: rem(10);
+		border-radius: 50%;
+	}
+}
+.bullet {
+	background-color: rgba($blackColor, 0.5);
+	width: rem(10);
+	height: rem(10);
+	border-radius: 50%;
+	cursor: pointer;
+}
+.bulletActive {
+	background-color: $whiteColor;
+	width: rem(25);
+	border-radius: 50px;
+}
+.prevButton,
+.nextButton {
+	@include sliderButtons;
+	z-index: 2;
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+	&.swiper-button-disabled {
+		color: rgba($blackColor, 0.5);
+	}
+}
+.prevButton {
+	left: rem(10);
+}
+.nextButton {
+	right: rem(10);
+}

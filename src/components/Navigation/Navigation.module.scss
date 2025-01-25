@@ -1,0 +1,11 @@
+@use '@assets/styles/_main.sass' as *;
+
+.menu {
+	display: flex;
+	align-items: center;
+	gap: rem(30);
+	& a {
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+}

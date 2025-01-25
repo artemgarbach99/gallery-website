@@ -1,0 +1,23 @@
+@use '@assets/styles/_mixins.scss' as *;
+@use '@assets/styles/_variables.scss' as *;
+@use '@assets/styles/_main.sass' as *;
+@use '@assets/styles/global.module.scss' as global;
+
+.wrap {
+	display: flex;
+	align-items: center;
+	gap: rem(10);
+	padding: rem(25) 0;
+}
+.item {
+	display: flex;
+	align-items: center;
+	gap: rem(10);
+}
+.link {
+	color: $blackColor;
+	line-height: 1;
+	&.active {
+		color: rgba($blackColor, 0.5);
+	}
+}

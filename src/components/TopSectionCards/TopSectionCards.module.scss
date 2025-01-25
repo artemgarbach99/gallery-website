@@ -1,0 +1,12 @@
+@use '@assets/styles/_main.sass' as *;
+@use '@assets/styles/_mixins.scss' as *;
+@use '@assets/styles/_variables.scss' as *;
+
+.cards {
+	width: 50%;
+}
+.list {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: rem(20);
+}

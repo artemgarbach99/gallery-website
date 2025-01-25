@@ -1,0 +1,37 @@
+@use '@assets/styles/_main.sass' as *;
+@use '@assets/styles/_mixins.scss' as *;
+@use '@assets/styles/_variables.scss' as *;
+
+.card {
+	display: flex;
+	gap: rem(20);
+}
+.content {
+	flex: 0 1 rem(1000);
+}
+.wrap {
+	background-color: $greyColor;
+	border-radius: rem(12);
+	padding: rem(30);
+}
+.image {
+	@include ibg;
+	border-radius: rem(12);
+	overflow: hidden;
+	padding-bottom: percent(550, 1000);
+	margin-top: rem(30);
+}
+.info {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: rem(20);
+	padding-top: rem(30);
+}
+.item {
+	display: flex;
+	align-items: center;
+	gap: rem(5);
+	font-size: rem(14);
+	font-weight: 500;
+}

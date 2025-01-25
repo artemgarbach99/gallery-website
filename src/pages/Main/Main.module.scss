@@ -1,0 +1,6 @@
+@use '@assets/styles/_main.sass' as *;
+.section {
+	display: flex;
+	gap: rem(20);
+	padding-top: rem(40);
+}

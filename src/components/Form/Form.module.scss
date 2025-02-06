@@ -1,0 +1,17 @@
+@use '/src/assets/styles/mixins' as *;
+@use '/src//assets/styles/variables' as *;
+
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.input {
+	@include input;
+	&.error input {
+		@include box-shadow($redColor);
+	}
+}
+.button {
+	@include button;
+}

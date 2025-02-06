@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '@/store/store'
 import { favoritesActions } from '@/store/favorites/favorites.slice'
 import { Link } from 'react-router-dom'
+import { modalActions } from '@/store/modal/modal.slice'
 
 export const SliderPostsCard = ({ card }: { card: IPostSlide }) => {
 	const dispatch: AppDispatch = useDispatch()
@@ -18,10 +19,12 @@ export const SliderPostsCard = ({ card }: { card: IPostSlide }) => {
 	const handleAddToFavorites = () => {
 		if (isInFavorite) {
 			dispatch(favoritesActions.removeFavorites(card))
+			dispatch(modalActions.modalOpen('Delete from favorites!'))
 			// alert('уже есть в корзине!')
 		} else {
 			dispatch(favoritesActions.addToFavorites(card))
-			console.log('пост добавлен в избранное!')
+			dispatch(modalActions.modalOpen('Added to favorites!'))
+			// console.log('Added to favorites!')
 		}
 	}
 

@@ -20,6 +20,7 @@ export interface IPostSlide {
 	description: string
 	urls: {
 		regular: string
+		thumb: string
 	}
 	user: {
 		bio: string
@@ -31,5 +32,7 @@ export interface IPostSlide {
 	alt_description: string
 	icon: string
 	created_at: string
+	topic_submissions: string
+	likes: number
 }
 export type TtopSectionCard = Pick<IPostSlide, 'urls' | 'description' | 'alt_description'>

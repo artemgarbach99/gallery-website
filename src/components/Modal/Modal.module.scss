@@ -1,0 +1,36 @@
+@use '/src//assets//styles/variables' as *;
+@use '/src/assets/styles/mixins' as *;
+
+.modal {
+	display: block;
+	position: fixed;
+	top: 30px;
+	right: -100%;
+	transform: translate(0, 0);
+	z-index: 5;
+
+	&.active {
+		// display: block;
+		// left: 50%;
+		// transform: translate(-50%, 0);
+		right: 30px;
+		transition: all 0.5s ease 0s;
+	}
+}
+
+.content {
+	@include box-shadow($boxShadowColor);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: $whiteColor;
+	padding: 15px;
+	border-radius: 5px;
+}
+
+.title {
+	font-size: 14px;
+	line-height: 1;
+	font-weight: 500;
+	color: $redColor;
+}

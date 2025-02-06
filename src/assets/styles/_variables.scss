@@ -11,6 +11,7 @@ $fontFamily: 'Plus Jakarta Sans';
 $JosefinSans: 'Josefin Sans';
 $Jura: 'Jura';
 // адаптив
+$laptop: em(1650); // ноутбуки 14-16 inch
 $pc: em($containerWidth);
 $bigTablet: em(1080);
 $tablet: em(991.98);

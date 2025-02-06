@@ -2,11 +2,10 @@ import { Link, useLocation } from 'react-router-dom'
 import style from '@components/Breadcrumbs/Breadcrumbs.module.scss'
 import global from '@assets/styles/global.module.scss'
 import { MdArrowForwardIos } from 'react-icons/md'
+
 export const Breadcrumbs = () => {
 	const location = useLocation()
 	const path: string = location.pathname.split('/').pop() || ''
-
-	console.log(path)
 
 	return (
 		<div className='container'>

@@ -12,7 +12,8 @@
 	@include box-shadow($boxShadowColor);
 	width: rem(48);
 	height: rem(48);
-	border-radius: 12px;
+	border-radius: 3px;
+	background-color: $greyColor;
 	overflow: hidden;
 	display: flex;
 	align-items: center;
@@ -20,8 +21,14 @@
 }
 .name {
 	font-family: $fontFamily;
-	font-size: rem(12);
+	font-size: rem(13);
 	line-height: 1;
 	text-transform: uppercase;
 	font-weight: 700;
+	color: $boxShadowColor;
+}
+.links {
+	display: flex;
+	align-items: center;
+	gap: rem(5);
 }

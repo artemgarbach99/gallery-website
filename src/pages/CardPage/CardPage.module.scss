@@ -12,14 +12,14 @@
 .wrap {
 	background-color: $greyColor;
 	border-radius: rem(12);
-	padding: rem(30);
+	padding: rem(30) rem(15);
 }
 .image {
 	@include ibg;
 	border-radius: rem(12);
 	overflow: hidden;
-	padding-bottom: percent(550, 1000);
-	margin-top: rem(30);
+	padding-bottom: percent(500, 1000);
+	margin-top: rem(20);
 }
 .info {
 	display: flex;

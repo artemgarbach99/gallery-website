@@ -1,17 +1,13 @@
-import { Breadcrumbs } from '@/components/Breadcrumbs/Breadcrumbs'
-import { Header } from '@/components/Header/Header'
 import { Modal } from '@/components/Modal/Modal'
 import { RootState } from '@/store/store'
 import { useSelector } from 'react-redux'
 import { Outlet } from 'react-router-dom'
 
-export const LayoutPage = () => {
+export const LayoutLogin = () => {
 	const { isOpen, message } = useSelector((state: RootState) => state.modal)
 	return (
 		<div className='wrapper'>
-			<Header />
 			<main>
-				<Breadcrumbs />
 				<div className='container'>
 					<Outlet />
 				</div>

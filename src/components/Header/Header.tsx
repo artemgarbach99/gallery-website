@@ -9,7 +9,8 @@ import { RootState } from '@/store/store'
 
 export const Header = () => {
 	const { favorites } = useSelector((state: RootState) => state.favorites)
-	console.log(favorites.length)
+	// const { email } = useSelector((state: RootState) => state.user)
+	// console.log(email)
 
 	return (
 		<header className={header.header}>

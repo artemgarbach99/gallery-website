@@ -91,3 +91,14 @@
 		}
 	}
 }
+@mixin button {
+	@include box-shadow($boxShadowColor);
+	border-radius: 3px;
+	overflow: hidden;
+	padding: 12px;
+	color: $whiteColor;
+	font-weight: 700;
+	font-size: 14px;
+	text-transform: uppercase;
+	background-color: $redColor;
+}

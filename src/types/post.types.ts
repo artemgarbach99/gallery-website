@@ -35,4 +35,4 @@ export interface IPostSlide {
 	topic_submissions: string
 	likes: number
 }
-export type TtopSectionCard = Pick<IPostSlide, 'urls' | 'description' | 'alt_description'>
+export type TtopSectionCard = Pick<IPostSlide, 'urls' | 'description' | 'alt_description' | 'id'>

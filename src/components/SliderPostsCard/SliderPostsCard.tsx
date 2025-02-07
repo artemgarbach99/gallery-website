@@ -36,7 +36,9 @@ export const SliderPostsCard = ({ card }: { card: IPostSlide }) => {
 				<img src={card.urls.regular} alt='' />
 			</Link>
 			<div className={cardStyle.block}>
-				<div className={`${cardStyle.title} ${global.h5}`}>{card.alt_description}</div>
+				<Link to={`/card/${card.id}`} className={`${cardStyle.title} ${global.h5}`}>
+					{card.alt_description}
+				</Link>
 				<div className={`${cardStyle.description} ${global.p}`}>{card.description}</div>
 				<div className={cardStyle.user}>
 					<div className={cardStyle.wrap}>

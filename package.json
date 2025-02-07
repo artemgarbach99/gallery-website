@@ -12,6 +12,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
     "@types/node": "^22.10.5",
+    "@types/react-router-dom": "^5.3.3",
     "@types/swiper": "^5.4.3",
     "firebase": "^11.2.0",
     "react": "^18.3.1",

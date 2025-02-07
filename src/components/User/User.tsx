@@ -1,9 +1,9 @@
 import { useAuth } from '@/hooks/useAuth'
-import { AppDispatch } from '@/store/store'
+import { AppDispatch, RootState } from '@/store/store'
 import { userActions } from '@/store/user/user.slice'
 import user from '@components/User/User.module.scss'
 import { FaUserAlt } from 'react-icons/fa'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { IoIosArrowDown } from 'react-icons/io'
 import { RiLogoutBoxRLine } from 'react-icons/ri'
@@ -12,8 +12,11 @@ import { useState } from 'react'
 export const User = () => {
 	const dispatch: AppDispatch = useDispatch()
 	const { isAuth, email } = useAuth()
-
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+	const { id } = useSelector((state: RootState) => state.user)
+
+	console.log(id)
 
 	const dropDownHandler = () => {
 		setIsMenuOpen(prevState => !prevState)
@@ -27,7 +30,9 @@ export const User = () => {
 			</div>
 			{isAuth ? (
 				<div className={user.links}>
-					<div className={user.name}>{email}</div>
+					<Link to={`/user-page/${id}`} className={user.name}>
+						{email}
+					</Link>
 					<button
 						type='button'
 						className={isMenuOpen ? `${user.button} ${user.open}` : user.button}
@@ -39,6 +44,7 @@ export const User = () => {
 							<button className={user.logout} onClick={() => dispatch(userActions.removeUser())}>
 								<RiLogoutBoxRLine size={16} /> log out
 							</button>
+							<Link to={'/profile-edit'}>profile edit</Link>
 						</div>
 					)}
 				</div>

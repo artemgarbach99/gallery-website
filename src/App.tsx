@@ -11,6 +11,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from './store/store'
 import { useEffect } from 'react'
 import { modalActions } from './store/modal/modal.slice'
+import { UserPage } from './pages/UserPage/UserPage'
+import { ProfileEdit } from './pages/ProfileEdit/ProfileEdit'
 
 function App() {
 	const dispatch = useDispatch()
@@ -34,6 +36,8 @@ function App() {
 				<Route element={<LayoutPage />}>
 					<Route path='/favorites' element={<Favorites />} />
 					<Route path='card/:id' element={<CardPage />} />
+					<Route path='user-page/:id' element={<UserPage />} />
+					<Route path='/profile-edit' element={<ProfileEdit />} />
 				</Route>
 				<Route element={<LayoutLogin />}>
 					<Route path='/login' element={<LoginPage />} />

@@ -44,7 +44,6 @@ export const Login = () => {
 				dispatch(modalActions.setError(false))
 			})
 			.catch(() => errorMessage(email, password))
-		// .catch(() => alert('Invalid user!'))
 	}
 	return (
 		<div>

@@ -4,7 +4,7 @@
 .modal {
 	display: block;
 	position: fixed;
-	top: 30px;
+	top: 10px;
 	right: -100%;
 	transform: translate(0, 0);
 	z-index: 5;
@@ -13,7 +13,7 @@
 		// display: block;
 		// left: 50%;
 		// transform: translate(-50%, 0);
-		right: 30px;
+		right: 10px;
 		transition: all 0.5s ease 0s;
 	}
 }
@@ -24,7 +24,7 @@
 	align-items: center;
 	justify-content: center;
 	background-color: $whiteColor;
-	padding: 15px;
+	padding: 20px 15px;
 	border-radius: 5px;
 }
 
@@ -32,5 +32,5 @@
 	font-size: 14px;
 	line-height: 1;
 	font-weight: 500;
-	color: $redColor;
+	color: $boxShadowColor;
 }

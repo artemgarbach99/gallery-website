@@ -1,20 +1,35 @@
 import { getAuth, updateProfile } from 'firebase/auth'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import userStyles from '@pages/ProfileEdit/ProfileEdit.module.scss'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 
 export const ProfileEdit = () => {
-	const [userName, setUserName] = useState('')
-	const [userPhotoURL, setUserPhotoURL] = useState('')
+	// const [userName, setUserName] = useState('')
+	// const [userPhotoURL, setUserPhotoURL] = useState('')
 
 	const auth = getAuth()
 	const user = auth.currentUser
 
+	const [userName, setUserName] = useState(user && user.displayName ? user.displayName : '')
+	const [userPhotoURL, setUserPhotoURL] = useState(user && user.photoURL ? user.photoURL : '')
+	console.log(userPhotoURL)
+
 	const { isAuth } = useAuth()
 	const navigate = useNavigate()
+
+	// if (!isAuth) {
+	// 	navigate('/')
+	// 	return null // Возвращаем null, чтобы компонент ничего не рендерил после перенаправления
+	// }
+
+	useEffect(() => {
+		if (!isAuth) {
+			navigate('/')
+		}
+	}, [isAuth, navigate])
+
 	if (!isAuth) {
-		navigate('/')
 		return null // Возвращаем null, чтобы компонент ничего не рендерил после перенаправления
 	}
 
@@ -22,7 +37,6 @@ export const ProfileEdit = () => {
 		updateProfile(user, {
 			displayName: userName,
 			photoURL: userPhotoURL
-			// photoURL: 'https://twam.ru/wp-content/uploads/2024/02/panda-v-ochkakh-1.webp'
 		})
 			.then(() => {
 				console.log('Успешно обновлено')

@@ -1,6 +1,8 @@
 import { getAuth, updateProfile } from 'firebase/auth'
 import { useState } from 'react'
 import userStyles from '@pages/ProfileEdit/ProfileEdit.module.scss'
+import { useNavigate } from 'react-router-dom'
+import { useAuth } from '@/hooks/useAuth'
 
 export const ProfileEdit = () => {
 	const [userName, setUserName] = useState('')
@@ -8,6 +10,13 @@ export const ProfileEdit = () => {
 
 	const auth = getAuth()
 	const user = auth.currentUser
+
+	const { isAuth } = useAuth()
+	const navigate = useNavigate()
+	if (!isAuth) {
+		navigate('/')
+		return null // Возвращаем null, чтобы компонент ничего не рендерил после перенаправления
+	}
 
 	const saveUpdateProfile = () => {
 		updateProfile(user, {
@@ -22,6 +31,7 @@ export const ProfileEdit = () => {
 				console.error('Ошибка при обновлении displayName', error)
 			})
 	}
+
 	return (
 		<div>
 			<div className={userStyles.input}>

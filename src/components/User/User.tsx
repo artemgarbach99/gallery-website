@@ -8,6 +8,9 @@ import { Link } from 'react-router-dom'
 import { IoIosArrowDown } from 'react-icons/io'
 import { RiLogoutBoxRLine } from 'react-icons/ri'
 import { useState } from 'react'
+import { getAuth } from 'firebase/auth'
+import { FaUserEdit } from 'react-icons/fa'
+import { IoMdLogOut } from 'react-icons/io'
 
 export const User = () => {
 	const dispatch: AppDispatch = useDispatch()
@@ -15,8 +18,10 @@ export const User = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
 
 	const { id } = useSelector((state: RootState) => state.user)
+	const auth = getAuth()
+	const userFarebase = auth.currentUser
 
-	console.log(id)
+	console.log(userFarebase)
 
 	const dropDownHandler = () => {
 		setIsMenuOpen(prevState => !prevState)
@@ -25,13 +30,16 @@ export const User = () => {
 	return (
 		<div className={user.user}>
 			<div className={user.avatar}>
-				<FaUserAlt size={24} />
-				{/* <img src='/user.png' alt='' /> */}
+				{isAuth && userFarebase.photoURL ? (
+					<img src={userFarebase.photoURL} alt='User Profile' />
+				) : (
+					<FaUserAlt size={24} />
+				)}
 			</div>
 			{isAuth ? (
-				<div className={user.links}>
+				<div className={user.content}>
 					<Link to={`/user-page/${id}`} className={user.name}>
-						{email}
+						{userFarebase.displayName ? userFarebase.displayName : email}
 					</Link>
 					<button
 						type='button'
@@ -41,10 +49,13 @@ export const User = () => {
 					</button>
 					{isMenuOpen && (
 						<div className={user.dropdown}>
-							<button className={user.logout} onClick={() => dispatch(userActions.removeUser())}>
-								<RiLogoutBoxRLine size={16} /> log out
+							<Link className={user.link} to={'/profile-edit'}>
+								<FaUserEdit size={16} />
+								profile edit
+							</Link>
+							<button className={user.link} onClick={() => dispatch(userActions.removeUser())}>
+								<IoMdLogOut size={16} /> log out
 							</button>
-							<Link to={'/profile-edit'}>profile edit</Link>
 						</div>
 					)}
 				</div>

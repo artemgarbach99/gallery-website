@@ -36,7 +36,7 @@
 		transition: all 0.3s ease 0s;
 	}
 }
-.links {
+.content {
 	display: flex;
 	align-items: center;
 	gap: rem(5);
@@ -44,17 +44,21 @@
 }
 .dropdown {
 	@include box-shadow($boxShadowColor);
+	display: flex;
+	flex-direction: column;
+	gap: rem(5);
 	position: absolute;
 	width: 100%;
+	min-width: rem(110);
 	top: 100%;
 	left: 0;
-	margin-top: 10px;
+	margin-top: rem(10);
 	background-color: $whiteColor;
 	z-index: 2;
 	padding: 10px 5px;
 	border-radius: 6px;
 }
-.logout {
+.link {
 	display: flex;
 	align-items: center;
 	gap: 5px;

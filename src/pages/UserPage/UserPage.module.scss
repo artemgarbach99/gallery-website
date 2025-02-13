@@ -1,5 +1,24 @@
 @use '/src/assets/styles/_mixins.scss' as *;
-
+@use '/src//assets/styles/variables' as *;
+.top {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	background-color: $greyColor;
+	border-radius: 12px;
+	padding: 15px;
+}
+.banner {
+	background-color: $greenColor;
+	border-radius: 12px;
+	overflow: hidden;
+	height: 150px;
+	& img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
 .avatar {
 	display: flex;
 	align-items: center;
@@ -9,9 +28,53 @@
 .image {
 	width: 75px;
 	height: 75px;
+	border-radius: 12px;
+	overflow: hidden;
 	& img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
 	}
+}
+.row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+}
+.block {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+.name {
+	font-size: 14px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+.email {
+	font-size: 14px;
+	color: $boxShadowColor;
+}
+.edit {
+	@include button(transparent, $redColor, 12px);
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+.menu {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+.link {
+	font-size: 12px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+.content {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 20px;
+	padding: 40px 0;
 }

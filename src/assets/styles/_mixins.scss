@@ -91,14 +91,14 @@
 		}
 	}
 }
-@mixin button {
+@mixin button($bg: $redColor, $color: $whiteColor, $fz: 14px) {
 	@include box-shadow($boxShadowColor);
 	border-radius: 3px;
 	overflow: hidden;
 	padding: 12px;
-	color: $whiteColor;
+	color: $color;
 	font-weight: 700;
-	font-size: 14px;
+	font-size: $fz;
 	text-transform: uppercase;
-	background-color: $redColor;
+	background-color: $bg;
 }

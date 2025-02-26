@@ -85,11 +85,11 @@
 		padding: rem(3);
 		margin: rem(3);
 	}
-	@media (max-width: $mobile) {
-		&::-webkit-scrollbar {
-			width: rem(8);
-		}
-	}
+	// @media (max-width: $mobile) {
+	// 	&::-webkit-scrollbar {
+	// 		width: rem(8);
+	// 	}
+	// }
 }
 @mixin button($bg: $redColor, $color: $whiteColor, $fz: 14px) {
 	@include box-shadow($boxShadowColor);

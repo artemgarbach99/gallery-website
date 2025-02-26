@@ -7,6 +7,7 @@ import { fetchImages } from '@/store/news/news.actions'
 import 'swiper/scss'
 import sliderPostsStyles from '@components/SliderPosts/SliderPosts.module.scss'
 import { SliderPostsCard } from '../SliderPostsCard/SliderPostsCard'
+import '@assets/styles/_swiper.scss'
 
 export const SliderPosts = () => {
 	const { images } = useSelector((state: RootState) => state.images)
@@ -22,6 +23,7 @@ export const SliderPosts = () => {
 				modules={[Virtual, Navigation, Pagination]}
 				spaceBetween={20}
 				slidesPerView={4}
+				// autoHeight={true}
 				className={sliderPostsStyles.sliderPosts}
 				navigation={{ prevEl: `.${sliderPostsStyles.prevButton}`, nextEl: `.${sliderPostsStyles.nextButton}` }}>
 				{images.map((card, index) => (

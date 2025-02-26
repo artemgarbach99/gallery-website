@@ -16,8 +16,8 @@ export const CardPage = () => {
 	const { id } = useParams()
 	const card = images.find(card => card.id === id)
 
-	const cardName = images.find(card => card.id === path) ?? ''
-	const breadcrumbs = [{ name: 'Home', link: '/' }, { name: `${cardName.alt_description}` }]
+	const cardName = images.find(card => card.id === path)
+	const breadcrumbs = [{ name: 'Home', link: '/' }, { name: cardName ? `${cardName.alt_description}` : '' }]
 
 	return (
 		<div>

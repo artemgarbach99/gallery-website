@@ -5,6 +5,7 @@
 .card {
 	display: flex;
 	flex-direction: column;
+	height: 100%;
 	gap: rem(10);
 	padding: rem(10);
 	border-radius: rem(12);
@@ -30,6 +31,10 @@
 .description {
 	flex: auto;
 	color: rgba($blackColor, 0.7);
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
 }
 .user {
 	display: flex;

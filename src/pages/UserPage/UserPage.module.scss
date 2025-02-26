@@ -71,10 +71,13 @@
 	font-size: 12px;
 	font-weight: 700;
 	text-transform: uppercase;
+	cursor: pointer;
 }
 .content {
+	padding: 40px 0;
+}
+.list {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	gap: 20px;
-	padding: 40px 0;
 }

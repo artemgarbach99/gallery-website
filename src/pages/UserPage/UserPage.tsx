@@ -3,17 +3,20 @@ import { useSelector } from 'react-redux'
 import userStyles from '@pages/UserPage/UserPage.module.scss'
 import { getAuth } from 'firebase/auth'
 import { useAuth } from '@/hooks/useAuth'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { FaUserEdit } from 'react-icons/fa'
 import { SliderPostsCard } from '@/components/SliderPostsCard/SliderPostsCard'
 import { Breadcrumbs } from '@/components/Breadcrumbs/Breadcrumbs'
+import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
+import '@assets/styles/_tabs.scss'
 
 export const UserPage = () => {
 	const { email } = useSelector((state: RootState) => state.user)
 	const { isAuth } = useAuth()
 
 	const { images } = useSelector((state: RootState) => state.images)
+	console.log(images)
 
 	const auth = getAuth()
 	const user = auth.currentUser
@@ -24,10 +27,10 @@ export const UserPage = () => {
 		return null // Возвращаем null, чтобы компонент ничего не рендерил после перенаправления
 	}
 
-	const breadcrumbs = [{ name: 'Home', link: '/' }, { name: user.displayName || email }]
+	const breadcrumbs = [{ name: 'Home', link: '/' }, { name: (user && user.displayName) || email }]
 
 	return (
-		<div>
+		<Tabs>
 			<Breadcrumbs items={breadcrumbs} />
 			<div className={userStyles.top}>
 				<div className={userStyles.banner}>
@@ -37,19 +40,21 @@ export const UserPage = () => {
 					/>
 				</div>
 				<div className={userStyles.row}>
-					<div className={userStyles.avatar}>
-						<div className={userStyles.image}>
-							<img src={user.photoURL} alt='User Profile' />
+					{user && (
+						<div className={userStyles.avatar}>
+							<div className={userStyles.image}>
+								<img src={user.photoURL ?? ''} alt='User Profile' />
+							</div>
+							<div className={userStyles.block}>
+								<div className={userStyles.name}>{user.displayName}</div>
+								<div className={userStyles.email}>{email}</div>
+							</div>
 						</div>
-						<div className={userStyles.block}>
-							<div className={userStyles.name}>{user.displayName}</div>
-							<div className={userStyles.email}>{email}</div>
-						</div>
-					</div>
-					<ul className={userStyles.menu}>
-						<li className={userStyles.link}>Liked posts</li>
-						<li className={userStyles.link}>Interesting</li>
-					</ul>
+					)}
+					<TabList className={userStyles.menu}>
+						<Tab className={userStyles.link}>Most liked posts</Tab>
+						<Tab className={userStyles.link}>Interesting</Tab>
+					</TabList>
 					<Link className={userStyles.edit} to={'/profile-edit'}>
 						<FaUserEdit size={16} />
 						Edit Profile
@@ -57,10 +62,15 @@ export const UserPage = () => {
 				</div>
 			</div>
 			<div className={userStyles.content}>
-				{images.map((card, index) => (
-					<SliderPostsCard key={index} card={card} />
-				))}
+				<TabPanel className={userStyles.list}>
+					{images
+						.filter(card => card.likes >= 50)
+						.map((card, index) => (
+							<SliderPostsCard key={index} card={card} />
+						))}
+				</TabPanel>
+				<TabPanel>Interesting</TabPanel>
 			</div>
-		</div>
+		</Tabs>
 	)
 }

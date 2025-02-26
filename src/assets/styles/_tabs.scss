@@ -1,0 +1,5 @@
+@use '/src/assets/styles/variables' as *;
+
+.react-tabs__tab--selected {
+	color: $redColor;
+}

@@ -1,4 +1,3 @@
-import { Breadcrumbs } from '@/components/Breadcrumbs/Breadcrumbs'
 import { Header } from '@/components/Header/Header'
 import { Modal } from '@/components/Modal/Modal'
 import { RootState } from '@/store/store'
@@ -11,7 +10,7 @@ export const LayoutPage = () => {
 		<div className='wrapper'>
 			<Header />
 			<main>
-				<Breadcrumbs />
+				{/* <Breadcrumbs items={breadcrumbs} /> */}
 				<div className='container'>
 					<Outlet />
 				</div>

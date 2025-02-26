@@ -1,22 +1,39 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import style from '@components/Breadcrumbs/Breadcrumbs.module.scss'
 import global from '@assets/styles/global.module.scss'
 import { MdArrowForwardIos } from 'react-icons/md'
-import { useSelector } from 'react-redux'
-import { RootState } from '@/store/store'
+import { Breadcrumb } from '@/pages/Favorites/Favorites'
 
-export const Breadcrumbs = () => {
-	const location = useLocation()
-	const path: string = location.pathname.split('/').pop() || ''
-	console.log(path)
+interface BreadcrumbProps {
+	items: Breadcrumb[]
+}
 
-	const { images } = useSelector((state: RootState) => state.images)
-	const cardName = images.find(card => card.id === path) ?? ''
-	console.log(cardName)
+export const Breadcrumbs = ({ items = [] }: BreadcrumbProps) => {
+	// const location = useLocation()
+	// const path: string = location.pathname.split('/').pop() || ''
+
+	// const { images } = useSelector((state: RootState) => state.images)
+	// const cardName = images.find(card => card.id === path) ?? ''
+
+	// const { email } = useSelector((state: RootState) => state.user)
 
 	return (
-		<div className='container'>
+		<div>
 			<ul className={style.wrap}>
+				{items.map((item, index) => (
+					<li key={index} className={style.item}>
+						{item.link ? (
+							<Link className={`${style.link} ${global.h5}`} to={item.link}>
+								{item.name}
+							</Link>
+						) : (
+							<span className={`${style.link} ${global.h5} ${style.active}`}>{item.name}</span>
+						)}
+						{index < items.length - 1 && <MdArrowForwardIos size={14} />}
+					</li>
+				))}
+			</ul>
+			{/* <ul className={style.wrap}>
 				<li className={style.item}>
 					<Link className={`${style.link} ${global.h5}`} to={'/'}>
 						Home
@@ -30,7 +47,7 @@ export const Breadcrumbs = () => {
 						</span>
 					</li>
 				)}
-			</ul>
+			</ul> */}
 		</div>
 	)
 }

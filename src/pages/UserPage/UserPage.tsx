@@ -3,10 +3,11 @@ import { useSelector } from 'react-redux'
 import userStyles from '@pages/UserPage/UserPage.module.scss'
 import { getAuth } from 'firebase/auth'
 import { useAuth } from '@/hooks/useAuth'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { FaUserEdit } from 'react-icons/fa'
 import { SliderPostsCard } from '@/components/SliderPostsCard/SliderPostsCard'
+import { Breadcrumbs } from '@/components/Breadcrumbs/Breadcrumbs'
 
 export const UserPage = () => {
 	const { email } = useSelector((state: RootState) => state.user)
@@ -23,8 +24,11 @@ export const UserPage = () => {
 		return null // Возвращаем null, чтобы компонент ничего не рендерил после перенаправления
 	}
 
+	const breadcrumbs = [{ name: 'Home', link: '/' }, { name: user.displayName || email }]
+
 	return (
 		<div>
+			<Breadcrumbs items={breadcrumbs} />
 			<div className={userStyles.top}>
 				<div className={userStyles.banner}>
 					<img

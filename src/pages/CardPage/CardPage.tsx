@@ -1,19 +1,27 @@
 import { RootState } from '@/store/store'
 import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import cardStyles from '@pages/CardPage/CardPage.module.scss'
 import global from '@assets/styles/global.module.scss'
 import { FaRegCalendar } from 'react-icons/fa'
 import { AiOutlineLike } from 'react-icons/ai'
 import { CiFolderOn } from 'react-icons/ci'
+import { Breadcrumbs } from '@/components/Breadcrumbs/Breadcrumbs'
 
 export const CardPage = () => {
+	const location = useLocation()
+	const path: string = location.pathname.split('/').pop() || ''
+
 	const { images } = useSelector((state: RootState) => state.images)
 	const { id } = useParams()
 	const card = images.find(card => card.id === id)
 
+	const cardName = images.find(card => card.id === path) ?? ''
+	const breadcrumbs = [{ name: 'Home', link: '/' }, { name: `${cardName.alt_description}` }]
+
 	return (
 		<div>
+			<Breadcrumbs items={breadcrumbs} />
 			{card ? (
 				<div className={cardStyles.card}>
 					<div className={cardStyles.content}>

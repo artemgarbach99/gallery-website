@@ -1,5 +1,23 @@
 @use '/src/assets/styles/_mixins.scss' as *;
+@use '/src/assets/styles/main' as *;
 
+.list {
+	display: grid;
+	gap: rem(20);
+	grid-template-columns: repeat(2, 1fr);
+}
+.item {
+	display: flex;
+	flex-direction: column;
+	gap: rem(5);
+}
 .input {
 	@include input;
+}
+.button {
+	@include button;
+	display: flex;
+	align-items: center;
+	gap: rem(10);
+	margin-top: rem(20);
 }

@@ -1,0 +1,20 @@
+@use '@assets/styles/_main.sass' as *;
+@use '@assets/styles/_mixins.scss' as *;
+@use '@assets/styles/_variables.scss' as *;
+
+.card {
+	display: flex;
+	gap: 10px;
+}
+.content {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.image {
+	@include ibg;
+	flex: 0 0 rem(90);
+	padding-bottom: rem(90);
+	overflow: hidden;
+	border-radius: 6px;
+}

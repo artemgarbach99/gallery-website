@@ -6,7 +6,6 @@ import { FaUserAlt } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { IoIosArrowDown } from 'react-icons/io'
-import { RiLogoutBoxRLine } from 'react-icons/ri'
 import { useState } from 'react'
 import { getAuth } from 'firebase/auth'
 import { FaUserEdit } from 'react-icons/fa'
@@ -30,7 +29,7 @@ export const User = () => {
 	return (
 		<div className={user.user}>
 			<div className={user.avatar}>
-				{isAuth && userFarebase.photoURL ? (
+				{isAuth && userFarebase ? (
 					<Link to={`/user-page/${id}`}>
 						<img src={userFarebase.photoURL} alt='User Profile' />
 					</Link>
@@ -38,7 +37,7 @@ export const User = () => {
 					<FaUserAlt size={24} />
 				)}
 			</div>
-			{isAuth ? (
+			{isAuth && userFarebase ? (
 				<div className={user.content}>
 					<Link to={`/user-page/${id}`} className={user.name}>
 						{userFarebase.displayName ? userFarebase.displayName : email}

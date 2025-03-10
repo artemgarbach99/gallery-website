@@ -16,7 +16,6 @@ export const UserPage = () => {
 	const { isAuth } = useAuth()
 
 	const { images } = useSelector((state: RootState) => state.images)
-	console.log(images)
 
 	const auth = getAuth()
 	const user = auth.currentUser

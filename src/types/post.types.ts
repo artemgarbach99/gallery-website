@@ -28,6 +28,7 @@ export interface IPostSlide {
 			large: string
 		}
 		username: string
+		total_photos: string
 	}
 	alt_description: string
 	icon: string
@@ -35,4 +36,5 @@ export interface IPostSlide {
 	topic_submissions: string
 	likes: number
 }
+
 export type TtopSectionCard = Pick<IPostSlide, 'urls' | 'description' | 'alt_description' | 'id'>

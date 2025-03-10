@@ -1,22 +1,26 @@
 import { IPostSlide } from '@/types/post.types'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
-interface ApiResponse {
-	results: IPostSlide[]
-}
+// interface ApiResponse {
+// 	results: IPostSlide[]
+// }
 
 export const fetchImages = createAsyncThunk<IPostSlide[], void, { rejectValue: string }>(
 	'images/fetchImages',
-	async (images, { rejectWithValue }) => {
+	async (_, { rejectWithValue }) => {
 		try {
 			const response = await fetch(
 				'https://api.unsplash.com/photos?page=2&&per_page=30&client_id=Y5sNf_2ibXSXDmY9kK3XWrVaDqIianhpaC7Fs3LZfqc'
 			)
-			const data: ApiResponse = await response.json()
+			const data: IPostSlide[] = await response.json()
 			return data
 			// return data.results
-		} catch (error) {
-			return rejectWithValue('Ошибка при получении данных!')
+		} catch (error: unknown) {
+			if (error instanceof Error) {
+				return rejectWithValue(error.message)
+			}
+			return rejectWithValue('Неизвестная ошибка')
+			// return rejectWithValue('Ошибка при получении данных!')
 		}
 	}
 )

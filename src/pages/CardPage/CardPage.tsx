@@ -7,6 +7,7 @@ import { FaRegCalendar } from 'react-icons/fa'
 import { AiOutlineLike } from 'react-icons/ai'
 import { CiFolderOn } from 'react-icons/ci'
 import { Breadcrumbs } from '@/components/Breadcrumbs/Breadcrumbs'
+import { TopPostCard } from '@/components/TopPostCard/TopPostCard'
 
 export const CardPage = () => {
 	const location = useLocation()
@@ -15,6 +16,7 @@ export const CardPage = () => {
 	const { images } = useSelector((state: RootState) => state.images)
 	const { id } = useParams()
 	const card = images.find(card => card.id === id)
+	console.log(card)
 
 	const cardName = images.find(card => card.id === path)
 	const breadcrumbs = [{ name: 'Home', link: '/' }, { name: cardName ? `${cardName.alt_description}` : '' }]
@@ -47,7 +49,41 @@ export const CardPage = () => {
 							</div>
 						</div>
 					</div>
-					<div className={cardStyles.sidebar}>sidebar</div>
+					<div className={cardStyles.sidebar}>
+						<div className={cardStyles.links}>
+							<a href='#' className={cardStyles.link}>
+								share
+							</a>
+							<a href='#' className={cardStyles.link}>
+								marking
+							</a>
+							<a href='#' className={cardStyles.link}>
+								comment
+							</a>
+						</div>
+						<div className={cardStyles.block}>
+							<div className={cardStyles.line}>
+								<div className={cardStyles.avatar}>
+									<img src={card.user.profile_image.large} alt='' />
+								</div>
+								<div className={cardStyles.inner}>
+									<div className={global.h5}>{card.user.username}</div>
+									<div className={cardStyles.total}>{card.user.total_photos} photos</div>
+								</div>
+							</div>
+						</div>
+						<div className={cardStyles.block}>
+							<div className={global.h4}>top post</div>
+							<div className={cardStyles.list}>
+								{[...images]
+									.sort((a, b) => b.likes - a.likes)
+									.slice(0, 5)
+									.map(card => (
+										<TopPostCard card={card} />
+									))}
+							</div>
+						</div>
+					</div>
 				</div>
 			) : (
 				''

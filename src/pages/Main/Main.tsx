@@ -2,6 +2,7 @@ import { Posts } from '@/components/Posts/Posts'
 import { TopSectionCards } from '@/components/TopSectionCards/TopSectionCards'
 import { Slider } from '@/components/Slider/Slider'
 import main from '@pages/Main/Main.module.scss'
+import { PostsShowmore } from '@/components/PostsShowmore/PostsShowmore'
 // import { useDispatch } from 'react-redux'
 // import { useAuth } from '@/hooks/useAuth'
 // import { Navigate } from 'react-router-dom'
@@ -36,6 +37,7 @@ export const Main = () => {
 					<Slider />
 				</div>
 				<Posts />
+				<PostsShowmore />
 			</div>
 		</div>
 	)

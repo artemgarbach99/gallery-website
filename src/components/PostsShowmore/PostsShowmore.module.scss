@@ -1,0 +1,17 @@
+@use '@assets/styles/_mixins.scss' as *;
+
+.list {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 20px;
+	padding-top: 30px;
+}
+.bottom {
+	display: flex;
+	justify-content: center;
+	padding-top: 20px;
+}
+.button {
+	@include button;
+	margin: 0px auto;
+}

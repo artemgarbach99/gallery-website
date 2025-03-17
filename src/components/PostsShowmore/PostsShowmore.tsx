@@ -10,7 +10,6 @@ export const PostsShowmore = () => {
 	const { images } = useSelector((state: RootState) => state.images)
 
 	const [visibleItems, setVisibleItems] = useState(8)
-	console.log(visibleItems)
 
 	const loadMore = () => {
 		setVisibleItems(prevItems => prevItems + 8)

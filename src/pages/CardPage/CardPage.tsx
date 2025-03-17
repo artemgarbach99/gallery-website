@@ -79,7 +79,7 @@ export const CardPage = () => {
 									.sort((a, b) => b.likes - a.likes)
 									.slice(0, 5)
 									.map(card => (
-										<TopPostCard card={card} />
+										<TopPostCard card={card} key={card.id} />
 									))}
 							</div>
 						</div>

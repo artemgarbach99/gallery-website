@@ -1,0 +1,20 @@
+@use '/src/assets/styles/variables' as *;
+@use '/src/assets/styles/global.module.scss' as *;
+
+.list {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+}
+.card {
+	@extend .h3;
+	background-color: $boxShadowColor;
+	padding: 20px;
+}
+.loading {
+	@extend .h4;
+	display: flex;
+	justify-content: center;
+	color: $boxShadowColor;
+	padding: 20px 0;
+}

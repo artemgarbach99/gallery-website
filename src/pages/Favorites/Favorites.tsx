@@ -18,11 +18,15 @@ export const Favorites = () => {
 	return (
 		<div>
 			<Breadcrumbs items={breadcrumbs} />
-			<div className={style.list}>
-				{favorites.map((card, index) => (
-					<SliderPostsCard key={index} card={card} />
-				))}
-			</div>
+			{favorites.length > 0 ? (
+				<div className={style.list}>
+					{favorites.map((card, index) => (
+						<SliderPostsCard key={index} card={card} />
+					))}
+				</div>
+			) : (
+				<div className={style.info}>nothing in favorites!</div>
+			)}
 		</div>
 	)
 }

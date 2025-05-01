@@ -6,13 +6,13 @@
 	gap: 15px;
 	background-color: $greyColor;
 	border-radius: 12px;
-	padding: 15px;
+	padding: 30px;
 }
 .banner {
 	background-color: $greenColor;
 	border-radius: 12px;
 	overflow: hidden;
-	height: 150px;
+	height: 400px;
 	& img {
 		width: 100%;
 		height: 100%;
@@ -28,6 +28,7 @@
 .image {
 	width: 75px;
 	height: 75px;
+	flex: 0 0 75px;
 	border-radius: 12px;
 	overflow: hidden;
 	& img {

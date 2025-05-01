@@ -7,6 +7,9 @@ import global from '@assets/styles/global.module.scss'
 import { BsFillSaveFill } from 'react-icons/bs'
 import { Breadcrumbs } from '@/components/Breadcrumbs/Breadcrumbs'
 import { Breadcrumb } from '../Favorites/Favorites'
+import { doc, getDoc, getFirestore, setDoc } from 'firebase/firestore'
+import { useDispatch } from 'react-redux'
+import { modalActions } from '@/store/modal/modal.slice'
 
 export const ProfileEdit = () => {
 	// const [userName, setUserName] = useState('')
@@ -14,13 +17,32 @@ export const ProfileEdit = () => {
 
 	const auth = getAuth()
 	const user = auth.currentUser
+	const db = getFirestore()
+	const dispatch = useDispatch()
 
 	const [userName, setUserName] = useState(user && user.displayName ? user.displayName : '')
 	const [userPhotoURL, setUserPhotoURL] = useState(user && user.photoURL ? user.photoURL : '')
 	const [userEmail, setUserEmail] = useState(user && user.email ? user.email : '')
+	const [userImageBanner, setUserImageBanner] = useState('')
 
 	const { isAuth } = useAuth()
 	const navigate = useNavigate()
+
+	useEffect(() => {
+		if (user && user.uid) {
+			const userDocRef = doc(db, 'users', user.uid)
+			getDoc(userDocRef)
+				.then(docSnap => {
+					if (docSnap.exists()) {
+						const data = docSnap.data()
+						setUserImageBanner(data.customProperty || '')
+					} else {
+						console.log('Документа для пользователя нет')
+					}
+				})
+				.catch(error => console.error('Ошибка получения данных пользователя из Firestore:', error))
+		}
+	}, [user])
 
 	// if (!isAuth) {
 	// 	navigate('/')
@@ -38,6 +60,7 @@ export const ProfileEdit = () => {
 	}
 
 	const saveUpdateProfile = () => {
+		// const db = getFirestore()
 		updateProfile(user, {
 			displayName: userName,
 			photoURL: userPhotoURL,
@@ -45,6 +68,22 @@ export const ProfileEdit = () => {
 		})
 			.then(() => {
 				console.log('Успешно обновлено')
+				dispatch(modalActions.modalOpen('Successfully added!'))
+				// После успешного обновления профиля обновляем Firestore
+				const userId = user.uid
+				setDoc(
+					doc(db, 'users', userId),
+					{
+						customProperty: `${userImageBanner}`
+					},
+					{ merge: true }
+				)
+					.then(() => {
+						console.log('Дополнительное свойство успешно обновлено в Firestore')
+					})
+					.catch(error => {
+						console.error('Ошибка при обновлении дополнительного свойства!', error)
+					})
 			})
 			.catch(error => {
 				console.error('Ошибка при обновлении!', error)
@@ -79,6 +118,17 @@ export const ProfileEdit = () => {
 						<span className={global.h5}>Email</span>
 						<div className={userStyles.input}>
 							<input type='text' value={userEmail} onChange={e => setUserEmail(e.target.value)} placeholder='email' />
+						</div>
+					</div>
+					<div className={userStyles.item}>
+						<span className={global.h5}>Image for banner</span>
+						<div className={userStyles.input}>
+							<input
+								type='text'
+								value={userImageBanner}
+								onChange={e => setUserImageBanner(e.target.value)}
+								placeholder='image banner'
+							/>
 						</div>
 					</div>
 				</div>

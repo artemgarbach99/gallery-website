@@ -10,8 +10,24 @@ import { SliderPostsCard } from '@/components/SliderPostsCard/SliderPostsCard'
 import { Breadcrumbs } from '@/components/Breadcrumbs/Breadcrumbs'
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
 import '@assets/styles/_tabs.scss'
+import { useEffect, useState } from 'react'
+import { fetchUserData } from '@/services/userService.js'
 
 export const UserPage = () => {
+	const [userData, setUserData] = useState(null)
+	useEffect(() => {
+		const auth = getAuth()
+		const user = auth.currentUser
+
+		if (user) {
+			const userId = user.uid
+
+			// Получаем данные пользователя
+			fetchUserData(userId).then(data => {
+				setUserData(data)
+			})
+		}
+	}, [])
 	const { email } = useSelector((state: RootState) => state.user)
 	const { isAuth } = useAuth()
 
@@ -34,7 +50,8 @@ export const UserPage = () => {
 			<div className={userStyles.top}>
 				<div className={userStyles.banner}>
 					<img
-						src='https://images.unsplash.com/photo-1734784548166-a1ffe07dd7cd?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+						// src='https://images.unsplash.com/photo-1734784548166-a1ffe07dd7cd?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+						src={userData && userData.customProperty}
 						alt=''
 					/>
 				</div>
@@ -47,6 +64,7 @@ export const UserPage = () => {
 							<div className={userStyles.block}>
 								<div className={userStyles.name}>{user.displayName}</div>
 								<div className={userStyles.email}>{email}</div>
+								{/* <div>{userData ? <div>{userData.customProperty}</div> : <div>Загрузка данных...</div>}</div> */}
 							</div>
 						</div>
 					)}

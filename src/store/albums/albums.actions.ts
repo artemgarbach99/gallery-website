@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
-export const fetchAlbums = createAsyncThunk('albums/fetchAlbums', async (page, { rejectWithValue }) => {
+export const fetchAlbums = createAsyncThunk('albums/fetchAlbums', async (page: number, { rejectWithValue }) => {
 	try {
 		const response = await fetch(`https://jsonplaceholder.typicode.com/albums?_limit=15&_page=${page}`)
 		const data = await response.json()

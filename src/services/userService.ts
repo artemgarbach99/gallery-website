@@ -1,6 +1,6 @@
 import { getFirestore, doc, getDoc } from 'firebase/firestore'
 
-export const fetchUserData = async userId => {
+export const fetchUserData = async (userId: string) => {
 	const db = getFirestore()
 	const userRef = doc(db, 'users', userId)
 

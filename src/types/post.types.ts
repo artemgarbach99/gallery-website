@@ -29,6 +29,14 @@ export interface IPostSlide {
 		}
 		username: string
 		total_photos: string
+		first_name: string
+		name: string
+		location: string
+		total_collections: string
+		total_illustrations: string
+		total_likes: string
+		total_promoted_illustrations: string
+		total_promoted_photos: string
 	}
 	alt_description: string
 	icon: string
@@ -38,3 +46,5 @@ export interface IPostSlide {
 }
 
 export type TtopSectionCard = Pick<IPostSlide, 'urls' | 'description' | 'alt_description' | 'id'>
+
+export type TUserCustomProperty = { customProperty: string }

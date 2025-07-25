@@ -21,7 +21,8 @@
 			"@components/*": ["src/components/*"],
 			"@pages/*": ["src/pages/*"],
 			"@layouts/*": ["src/layouts/*"],
-			"@store/*": ["src/store/*"]
+			"@store/*": ["src/store/*"],
+			"@services/*": ["src/services/*"]
 		},
 
 		/* Linting */

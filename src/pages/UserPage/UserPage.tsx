@@ -8,13 +8,18 @@ import { Link } from 'react-router-dom'
 import { FaUserEdit } from 'react-icons/fa'
 import { SliderPostsCard } from '@/components/SliderPostsCard/SliderPostsCard'
 import { Breadcrumbs } from '@/components/Breadcrumbs/Breadcrumbs'
+import { fetchUserData } from '@/services/userService'
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
 import '@assets/styles/_tabs.scss'
 import { useEffect, useState } from 'react'
-import { fetchUserData } from '@/services/userService.js'
+// import { TUserCustomProperty } from '@/types/post.types'
+import { DocumentData } from 'firebase/firestore'
+
+// type User = { customProperty: string }
 
 export const UserPage = () => {
-	const [userData, setUserData] = useState(null)
+	// const [userData, setUserData] = useState<TUserCustomProperty | null>(null)
+	const [userData, setUserData] = useState<DocumentData | null>(null)
 	useEffect(() => {
 		const auth = getAuth()
 		const user = auth.currentUser
@@ -51,7 +56,7 @@ export const UserPage = () => {
 				<div className={userStyles.banner}>
 					<img
 						// src='https://images.unsplash.com/photo-1734784548166-a1ffe07dd7cd?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-						src={userData && userData.customProperty}
+						src={userData?.customProperty ?? ''}
 						alt=''
 					/>
 				</div>

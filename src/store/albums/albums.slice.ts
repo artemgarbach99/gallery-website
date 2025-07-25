@@ -3,6 +3,7 @@ import { fetchAlbums } from './albums.actions'
 
 export interface IAlbumCard {
 	title: string
+	id: number
 }
 
 export interface AlbumsState {
@@ -30,7 +31,7 @@ export const albumsSlice = createSlice({
 				state.albums = [...state.albums, ...action.payload] // Добавляем новые альбомы
 				state.loading = false
 			})
-			.addCase(fetchAlbums.rejected, (state, action: any) => {
+			.addCase(fetchAlbums.rejected, (state, action) => {
 				state.loading = false
 				state.error = action.payload
 			})

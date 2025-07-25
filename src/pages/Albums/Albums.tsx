@@ -14,13 +14,25 @@ export const Albums = () => {
 	const dispatch: AppDispatch = useDispatch()
 	const breadcrumbs: Breadcrumb[] = [{ name: 'Home', link: '/' }, { name: 'albums' }]
 
-	// Обработчик прокрутки
-	const handleScroll = e => {
-		const distanceFetching =
-			e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight)
+	//* Обработчик прокрутки
+	// const handleScroll = e => {
+	// 	const distanceFetching =
+	// 		e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight)
 
-		if (distanceFetching < 10 && !fetching) {
-			setFetching(true)
+	// 	if (distanceFetching < 10 && !fetching) {
+	// 		setFetching(true)
+	// 	}
+	// }
+
+	//? test
+	const handleScroll = () => {
+		if (document.documentElement) {
+			const distanceFetching =
+				document.documentElement.scrollHeight - (document.documentElement.scrollTop + window.innerHeight)
+
+			if (distanceFetching < 10 && !fetching) {
+				setFetching(true)
+			}
 		}
 	}
 

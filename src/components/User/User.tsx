@@ -31,7 +31,7 @@ export const User = () => {
 			<div className={user.avatar}>
 				{isAuth && userFarebase ? (
 					<Link to={`/user-page/${id}`}>
-						<img src={userFarebase.photoURL} alt='User Profile' />
+						<img src={userFarebase.photoURL ?? undefined} alt='User Profile' />
 					</Link>
 				) : (
 					<FaUserAlt size={24} />

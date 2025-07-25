@@ -14,6 +14,7 @@ import { modalActions } from './store/modal/modal.slice'
 import { UserPage } from './pages/UserPage/UserPage'
 import { ProfileEdit } from './pages/ProfileEdit/ProfileEdit'
 import { Albums } from './pages/Albums/Albums'
+import { AuthorPage } from './pages/AuthorPage/AuthorPage'
 
 function App() {
 	const dispatch = useDispatch()
@@ -40,6 +41,7 @@ function App() {
 					<Route path='user-page/:id' element={<UserPage />} />
 					<Route path='/profile-edit' element={<ProfileEdit />} />
 					<Route path='/albums' element={<Albums />} />
+					<Route path='author-page/:id' element={<AuthorPage />} />
 				</Route>
 				<Route element={<LayoutLogin />}>
 					<Route path='/login' element={<LoginPage />} />

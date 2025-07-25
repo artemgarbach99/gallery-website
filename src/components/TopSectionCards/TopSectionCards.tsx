@@ -1,4 +1,4 @@
-import { fetchImages, fetchNews } from '@/store/news/news.actions'
+import { fetchImages } from '@/store/news/news.actions'
 import { AppDispatch, RootState } from '@store/store'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'

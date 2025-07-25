@@ -1,13 +1,13 @@
 import { RootState } from '@/store/store'
 import { useSelector } from 'react-redux'
-import { useLocation, useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import cardStyles from '@pages/CardPage/CardPage.module.scss'
 import global from '@assets/styles/global.module.scss'
 import { FaRegCalendar } from 'react-icons/fa'
 import { AiOutlineLike } from 'react-icons/ai'
 import { CiFolderOn } from 'react-icons/ci'
-import { Breadcrumbs } from '@/components/Breadcrumbs/Breadcrumbs'
-import { TopPostCard } from '@/components/TopPostCard/TopPostCard'
+import { Breadcrumbs } from '@components/Breadcrumbs/Breadcrumbs'
+import { TopPostCard } from '@components/TopPostCard/TopPostCard'
 
 export const CardPage = () => {
 	const location = useLocation()
@@ -67,7 +67,9 @@ export const CardPage = () => {
 									<img src={card.user.profile_image.large} alt='' />
 								</div>
 								<div className={cardStyles.inner}>
-									<div className={global.h5}>{card.user.username}</div>
+									<Link to={`/author-page/${card.id}`} className={global.h5}>
+										{card.user.username}
+									</Link>
 									<div className={cardStyles.total}>{card.user.total_photos} photos</div>
 								</div>
 							</div>

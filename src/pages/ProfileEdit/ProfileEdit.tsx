@@ -1,4 +1,4 @@
-import { getAuth, updateProfile } from 'firebase/auth'
+import { getAuth, updateEmail, updateProfile } from 'firebase/auth'
 import { useEffect, useState } from 'react'
 import userStyles from '@pages/ProfileEdit/ProfileEdit.module.scss'
 import { useNavigate } from 'react-router-dom'
@@ -61,33 +61,40 @@ export const ProfileEdit = () => {
 
 	const saveUpdateProfile = () => {
 		// const db = getFirestore()
-		updateProfile(user, {
-			displayName: userName,
-			photoURL: userPhotoURL,
-			email: userEmail
-		})
-			.then(() => {
-				console.log('Успешно обновлено')
-				dispatch(modalActions.modalOpen('Successfully added!'))
-				// После успешного обновления профиля обновляем Firestore
-				const userId = user.uid
-				setDoc(
-					doc(db, 'users', userId),
-					{
-						customProperty: `${userImageBanner}`
-					},
-					{ merge: true }
-				)
-					.then(() => {
-						console.log('Дополнительное свойство успешно обновлено в Firestore')
-					})
-					.catch(error => {
-						console.error('Ошибка при обновлении дополнительного свойства!', error)
-					})
+		if (user) {
+			updateProfile(user, {
+				displayName: userName,
+				photoURL: userPhotoURL
+				// email: userEmail
 			})
-			.catch(error => {
-				console.error('Ошибка при обновлении!', error)
-			})
+				.then(() => {
+					console.log('Профиль успешно обновлен')
+					// Обновляем email через отдельную функцию
+					return updateEmail(user, userEmail)
+				})
+				.then(() => {
+					console.log('Успешно обновлен email')
+					dispatch(modalActions.modalOpen('Successfully added!'))
+					// После успешного обновления профиля обновляем Firestore
+					const userId = user.uid
+					setDoc(
+						doc(db, 'users', userId),
+						{
+							customProperty: `${userImageBanner}`
+						},
+						{ merge: true }
+					)
+						.then(() => {
+							console.log('Дополнительное свойство успешно обновлено в Firestore')
+						})
+						.catch(error => {
+							console.error('Ошибка при обновлении дополнительного свойства!', error)
+						})
+				})
+				.catch(error => {
+					console.error('Ошибка при обновлении!', error)
+				})
+		}
 	}
 
 	const breadcrumbs: Breadcrumb[] = [{ name: 'Home', link: '/' }, { name: 'Profile edit' }]

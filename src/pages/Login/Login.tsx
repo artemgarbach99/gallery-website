@@ -4,7 +4,7 @@ import { modalActions } from '@/store/modal/modal.slice'
 // import { RootState } from '@/store/store'
 import { userActions } from '@/store/user/user.slice'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
-import { doc, getFirestore, setDoc } from 'firebase/firestore'
+// import { doc, getFirestore, setDoc } from 'firebase/firestore'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
@@ -31,7 +31,7 @@ export const Login = () => {
 
 	const handleLogin = (email: string, password: string) => {
 		const auth = getAuth()
-		const db = getFirestore()
+		// const db = getFirestore()
 		signInWithEmailAndPassword(auth, email, password)
 			.then(({ user }) => {
 				console.log(user)

@@ -18,7 +18,7 @@ export const Search = () => {
 	)
 
 	// Обработчик кликов вне элемента
-	const handleOutsideClick = event => {
+	const handleOutsideClick = (event: MouseEvent) => {
 		if (
 			inputRef.current &&
 			!inputRef.current.contains(event.target) && // Проверяем, что клик был вне input

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
 import { Layout } from './layouts/LayoutMain/LayoutMain'
 import { Main } from './pages/Main/Main'
 import { Favorites } from '@pages/Favorites/Favorites'
@@ -33,7 +33,8 @@ function App() {
 		<Router>
 			<Routes>
 				<Route element={<Layout />}>
-					<Route path='/' element={<Main />} />
+					<Route path='/' element={<Navigate to='/main' />} />
+					<Route path='/main' element={<Main />} />
 				</Route>
 				<Route element={<LayoutPage />}>
 					<Route path='/favorites' element={<Favorites />} />

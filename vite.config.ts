@@ -5,6 +5,7 @@ import path from 'path'
 // https://vite.dev/config/
 export default defineConfig({
 	plugins: [react()],
+	base: '/gallery-website/',
 	resolve: {
 		alias: {
 			'@': path.resolve(__dirname, './src'),
@@ -12,6 +13,7 @@ export default defineConfig({
 			'@components': path.resolve(__dirname, './src/components'),
 			'@pages': path.resolve(__dirname, './src/pages'),
 			'@layouts': path.resolve(__dirname, './src/layouts'),
+			'@services': path.resolve(__dirname, './src/services'),
 			'@store': path.resolve(__dirname, './src/store')
 		}
 	}

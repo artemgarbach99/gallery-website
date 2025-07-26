@@ -37,6 +37,9 @@ export interface IPostSlide {
 		total_likes: string
 		total_promoted_illustrations: string
 		total_promoted_photos: string
+		links: {
+			html: string
+		}
 	}
 	alt_description: string
 	icon: string

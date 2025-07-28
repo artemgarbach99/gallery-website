@@ -45,7 +45,6 @@ export const Albums = () => {
 	// Загружаем данные при изменении `page`
 	useEffect(() => {
 		if (fetching) {
-			console.log('fetching')
 			setTimeout(() => {
 				dispatch(fetchAlbums(page))
 					.then(() => {

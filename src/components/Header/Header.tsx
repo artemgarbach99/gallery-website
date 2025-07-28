@@ -17,8 +17,8 @@ export const Header = () => {
 			<div className='container'>
 				<div className={header.body}>
 					<div className={header.left}>
-						<Link to={'/'} className={header.logo}>
-							<img src='/gallery.png' alt='' />
+						<Link to={'/main'} className={header.logo}>
+							<img src='/gallery-website/gallery.png' alt='' />
 							<span className={header.logoName}>gallery</span>
 						</Link>
 						<Navigation />

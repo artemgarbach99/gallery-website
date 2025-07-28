@@ -30,8 +30,7 @@ function App() {
 	}, [modal, dispatch])
 
 	return (
-		// <Router basename={import.meta.env.BASE_URL}>
-		<Router basename='/gallery-website/'>
+		<Router basename={import.meta.env.BASE_URL}>
 			<Routes>
 				<Route element={<Layout />}>
 					<Route path='/' element={<Navigate to='/main' />} />

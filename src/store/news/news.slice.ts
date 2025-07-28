@@ -1,14 +1,15 @@
 import { IPostSlide } from '@/types/post.types'
+import { InitialState } from '@/types/store.types'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { fetchImages } from '@store/news/news.actions'
 
-export interface ImagesState {
-	images: IPostSlide[]
-	loading: boolean
-	error: string | null
-}
+// export interface ImagesState {
+// 	images: IPostSlide[]
+// 	loading: boolean
+// 	error: string | null
+// }
 
-const initialState: ImagesState = {
+const initialState: InitialState<'images', IPostSlide> = {
 	images: [],
 	loading: false,
 	error: null
@@ -27,9 +28,9 @@ export const newsSlice = createSlice({
 				state.images = action.payload
 				state.loading = false
 			})
-			.addCase(fetchImages.rejected, (state, action: any) => {
+			.addCase(fetchImages.rejected, (state, action) => {
 				state.loading = false
-				state.error = action.payload
+				state.error = action.payload as string
 			})
 	}
 })

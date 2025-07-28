@@ -1,13 +1,14 @@
 import { IPostSlide } from '@/types/post.types'
+import { InitialState } from '@/types/store.types'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-export interface FavotitesState {
-	favorites: IPostSlide[]
-	loading: boolean
-	error: string | null
-}
+// export interface FavotitesState {
+// 	favorites: IPostSlide[]
+// 	loading: boolean
+// 	error: string | null
+// }
 
-const initialState: FavotitesState = {
+const initialState: InitialState<'favorites', IPostSlide> = {
 	favorites: [],
 	loading: false,
 	error: null

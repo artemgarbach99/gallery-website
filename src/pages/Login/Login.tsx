@@ -12,15 +12,16 @@ import { useNavigate } from 'react-router-dom'
 // 	email: string
 // 	password: string
 // }
+export type PropsLogin<T> = {
+	email: T
+	password: T
+}
 
 export const Login = () => {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 
-	// const { isOpen, message } = useSelector((state: RootState) => state.modal)
-
-	const errorMessage = (email: string, password: string) => {
-		// console.log(email, password)
+	const errorMessage = ({ email, password }: PropsLogin<string>) => {
 		if (!email || !password) {
 			dispatch(modalActions.modalOpen('Empty fields!'))
 		} else {
@@ -56,7 +57,7 @@ export const Login = () => {
 				// 	{ merge: true }
 				// )
 			})
-			.catch(() => errorMessage(email, password))
+			.catch(() => errorMessage({ email, password }))
 	}
 
 	return (

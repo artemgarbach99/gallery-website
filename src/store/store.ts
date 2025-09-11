@@ -4,13 +4,15 @@ import { favoritesReducer } from './favorites/favorites.slice'
 import { userReducer } from './user/user.slice'
 import { modalReducer } from './modal/modal.slice'
 import { albumsSlice } from './albums/albums.slice'
+import { followAuthorReducer } from './follow-author/follow-author.slice'
 
 const reducers = combineReducers({
 	images: newsSlice.reducer,
 	albums: albumsSlice.reducer,
 	favorites: favoritesReducer,
 	user: userReducer,
-	modal: modalReducer
+	modal: modalReducer,
+	authors: followAuthorReducer
 })
 
 export const store = configureStore({

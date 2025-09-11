@@ -10,8 +10,8 @@ export const Search = () => {
 	const { images } = useSelector((state: RootState) => state.images)
 	const [searchTerm, setSearchTerm] = useState('')
 	const [isDropdownVisible, setIsDropdownVisible] = useState(false)
-	const inputRef = useRef(null) // Ссылка на input
-	const dropdownRef = useRef(null) // Ссылка на dropdown
+	const inputRef = useRef<HTMLInputElement | null>(null) // Ссылка на input
+	const dropdownRef = useRef<HTMLInputElement | null>(null) // Ссылка на dropdown
 
 	const filteredCards = images.filter(
 		card => searchTerm && card.alt_description.toLowerCase().includes(searchTerm.toLowerCase())
@@ -19,11 +19,13 @@ export const Search = () => {
 
 	// Обработчик кликов вне элемента
 	const handleOutsideClick = (event: MouseEvent) => {
+		const target = event.target as Node
+
 		if (
 			inputRef.current &&
-			!inputRef.current.contains(event.target) && // Проверяем, что клик был вне input
+			!inputRef.current.contains(target) && // Проверяем, что клик был вне input
 			dropdownRef.current &&
-			!dropdownRef.current.contains(event.target) // И вне dropdown
+			!dropdownRef.current.contains(target) // И вне dropdown
 		) {
 			setIsDropdownVisible(false) // Закрываем dropdown
 		}

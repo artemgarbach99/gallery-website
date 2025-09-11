@@ -14,7 +14,7 @@ export const SliderPostsCard = ({ card }: { card: IPostSlide }) => {
 	const { favorites } = useSelector((state: RootState) => state.favorites)
 	// const { images } = useSelector((state: RootState) => state.images)
 
-	const isInFavorite = favorites.some(item => item.id === card.id)
+	const isInFavorite: boolean = favorites.some(item => item.id === card.id)
 
 	const handleAddToFavorites = () => {
 		if (isInFavorite) {
@@ -42,11 +42,13 @@ export const SliderPostsCard = ({ card }: { card: IPostSlide }) => {
 				<div className={`${cardStyle.description} ${global.p}`}>{card.description}</div>
 				<div className={cardStyle.user}>
 					<div className={cardStyle.wrap}>
-						<div className={cardStyle.icon}>
+						<Link to={`/author-page/${card.id}`} className={cardStyle.icon}>
 							<img src={card.user.profile_image.large} alt='' />
-						</div>
+						</Link>
 						<div className={cardStyle.content}>
-							<div className={cardStyle.name}>{card.user.username}</div>
+							<Link to={`/author-page/${card.id}`} className={cardStyle.name}>
+								{card.user.username}
+							</Link>
 							<div className={cardStyle.data}>{card.created_at}</div>
 						</div>
 					</div>

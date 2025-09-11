@@ -14,13 +14,10 @@ import { IoMdLogOut } from 'react-icons/io'
 export const User = () => {
 	const dispatch: AppDispatch = useDispatch()
 	const { isAuth, email } = useAuth()
-	const [isMenuOpen, setIsMenuOpen] = useState(false)
-
+	const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
 	const { id } = useSelector((state: RootState) => state.user)
 	const auth = getAuth()
 	const userFarebase = auth.currentUser
-
-	console.log(userFarebase)
 
 	const dropDownHandler = () => {
 		setIsMenuOpen(prevState => !prevState)

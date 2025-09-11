@@ -3,8 +3,7 @@ import { AppDispatch, RootState } from '@/store/store'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from '@pages/Albums/Albums.module.scss'
-import { Breadcrumbs } from '@/components/Breadcrumbs/Breadcrumbs'
-import { Breadcrumb } from '../Favorites/Favorites'
+import { Breadcrumb, Breadcrumbs } from '@/components/Breadcrumbs/Breadcrumbs'
 
 export const Albums = () => {
 	const { albums, loading } = useSelector((state: RootState) => state.albums)

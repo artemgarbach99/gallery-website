@@ -1,13 +1,15 @@
-import { RootState } from '@/store/store'
-import { useSelector } from 'react-redux'
+import { AppDispatch, RootState } from '@/store/store'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, useLocation, useParams } from 'react-router-dom'
 import cardStyles from '@pages/CardPage/CardPage.module.scss'
 import global from '@assets/styles/global.module.scss'
 import { FaRegCalendar } from 'react-icons/fa'
 import { AiOutlineLike } from 'react-icons/ai'
 import { CiFolderOn } from 'react-icons/ci'
-import { Breadcrumbs } from '@components/Breadcrumbs/Breadcrumbs'
+import { Breadcrumb, Breadcrumbs } from '@components/Breadcrumbs/Breadcrumbs'
 import { TopPostCard } from '@components/TopPostCard/TopPostCard'
+import { toggleSubscription } from '@/services/authorFollow'
+import { selectIsSubscribed } from '@/services/selectors'
 
 export const CardPage = () => {
 	const location = useLocation()
@@ -16,10 +18,28 @@ export const CardPage = () => {
 	const { images } = useSelector((state: RootState) => state.images)
 	const { id } = useParams()
 	const card = images.find(card => card.id === id)
-	console.log(card)
 
 	const cardName = images.find(card => card.id === path)
-	const breadcrumbs = [{ name: 'Home', link: '/' }, { name: cardName ? `${cardName.alt_description}` : '' }]
+	const breadcrumbs: Breadcrumb[] = [
+		{ name: 'Home', link: '/' },
+		{ name: cardName ? `${cardName.alt_description}` : '' }
+	]
+
+	const dispatch: AppDispatch = useDispatch()
+	// const { authors } = useSelector((state: RootState) => state.authors)
+	// const isInSub: boolean = authors.some(author => author.id === card.id)
+
+	// const handleSub = () => {
+	// 	if (isInSub) {
+	// 		dispatch(followAuthorActions.removeSub(card))
+	// 		dispatch(modalActions.modalOpen('Delete from favorites!'))
+	// 	} else {
+	// 		dispatch(followAuthorActions.addToSub(card))
+	// 		dispatch(modalActions.modalOpen('Added to favorites!'))
+	// 	}
+	// }
+
+	const isInSub = useSelector((state: RootState) => selectIsSubscribed(state, card.id))
 
 	return (
 		<div>
@@ -63,14 +83,20 @@ export const CardPage = () => {
 						</div>
 						<div className={cardStyles.block}>
 							<div className={cardStyles.line}>
-								<div className={cardStyles.avatar}>
+								<Link to={`/author-page/${card.id}`} className={cardStyles.avatar}>
 									<img src={card.user.profile_image.large} alt='' />
-								</div>
+								</Link>
 								<div className={cardStyles.inner}>
 									<Link to={`/author-page/${card.id}`} className={global.h5}>
 										{card.user.username}
 									</Link>
 									<div className={cardStyles.total}>{card.user.total_photos} photos</div>
+									<button
+										onClick={() => dispatch(toggleSubscription(card))}
+										type='button'
+										className={cardStyles.follow}>
+										{isInSub ? 'unsubscribe' : 'subscribe'}
+									</button>
 								</div>
 							</div>
 						</div>

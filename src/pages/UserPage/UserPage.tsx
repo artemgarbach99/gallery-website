@@ -14,6 +14,7 @@ import '@assets/styles/_tabs.scss'
 import { useEffect, useState } from 'react'
 // import { TUserCustomProperty } from '@/types/post.types'
 import { DocumentData } from 'firebase/firestore'
+import { AuthorFollow } from '../AuthorFollow/AuthorFollow'
 
 // type User = { customProperty: string }
 
@@ -37,6 +38,7 @@ export const UserPage = () => {
 	const { isAuth } = useAuth()
 
 	const { images } = useSelector((state: RootState) => state.images)
+	const { authors } = useSelector((state: RootState) => state.authors)
 
 	const auth = getAuth()
 	const user = auth.currentUser
@@ -75,7 +77,7 @@ export const UserPage = () => {
 					)}
 					<TabList className={userStyles.menu}>
 						<Tab className={userStyles.link}>Most liked posts</Tab>
-						<Tab className={userStyles.link}>Interesting</Tab>
+						<Tab className={userStyles.link}>Subscriptions</Tab>
 					</TabList>
 					<Link className={userStyles.edit} to={'/profile-edit'}>
 						<FaUserEdit size={16} />
@@ -91,7 +93,17 @@ export const UserPage = () => {
 							<SliderPostsCard key={index} card={card} />
 						))}
 				</TabPanel>
-				<TabPanel>Interesting</TabPanel>
+				<TabPanel>
+					{authors.length > 0 ? (
+						<div className={userStyles.list}>
+							{authors.map((card, index) => (
+								<AuthorFollow key={index} author={card} />
+							))}
+						</div>
+					) : (
+						<div>nothing in subscriptions!</div>
+					)}
+				</TabPanel>
 			</div>
 		</Tabs>
 	)

@@ -43,6 +43,8 @@
 }
 .bio {
 	@extend .p;
+	max-width: 500px;
+	text-align: justify;
 }
 .statistic {
 	display: grid;
@@ -65,4 +67,9 @@
 .link {
 	@include button($redColor, $whiteColor, 12px);
 	align-self: center;
+}
+
+.follow {
+	@include button($fz: 10px);
+	max-width: 120px;
 }

@@ -87,3 +87,6 @@
 	padding: rem(10);
 	border-radius: 6px;
 }
+.follow {
+	@include button($fz: 10px);
+}

@@ -2,7 +2,11 @@ import { Link } from 'react-router-dom'
 import style from '@components/Breadcrumbs/Breadcrumbs.module.scss'
 import global from '@assets/styles/global.module.scss'
 import { MdArrowForwardIos } from 'react-icons/md'
-import { Breadcrumb } from '@/pages/Favorites/Favorites'
+
+export interface Breadcrumb {
+	name: string
+	link?: string
+}
 
 interface BreadcrumbProps {
 	items: Breadcrumb[]

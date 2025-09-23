@@ -10,11 +10,15 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	gap: rem(20);
 }
 .left {
 	display: flex;
 	align-items: center;
 	gap: rem(70);
+	@media (max-width: $pc) {
+		gap: rem(30);
+	}
 }
 .logo {
 	display: flex;
@@ -23,6 +27,9 @@
 		width: rem(40);
 		height: auto;
 		object-fit: contain;
+		@media (max-width: $pc) {
+			width: rem(30);
+		}
 	}
 }
 .logoName {
@@ -33,14 +40,24 @@
 	line-height: 1;
 	text-transform: uppercase;
 	font-weight: 700;
+	@media (max-width: $mobile) {
+		display: none;
+	}
 }
 .right {
 	display: flex;
 	align-items: center;
 	gap: rem(30);
+	@media (max-width: $pc) {
+		gap: rem(20);
+	}
+	@media (max-width: $mobile) {
+		gap: rem(10);
+	}
 }
 .favorite {
 	@include box-shadow($boxShadowColor);
+	flex: 0 0 rem(48);
 	width: rem(48);
 	height: rem(48);
 	display: flex;
@@ -49,6 +66,20 @@
 	background-color: $greyColor;
 	border-radius: rem(3);
 	position: relative;
+	@media (max-width: $pc) {
+		flex: 0 0 rem(40);
+		width: rem(40);
+		height: rem(40);
+	}
+	@media (max-width: $mobile) {
+		flex: 0 0 rem(36);
+		width: rem(36);
+		height: rem(36);
+		& svg {
+			width: rem(20);
+			height: rem(20);
+		}
+	}
 }
 .count {
 	display: flex;
@@ -64,4 +95,9 @@
 	border-radius: rem(3);
 	font-size: rem(14);
 	font-weight: 500;
+	@media (max-width: $mobile) {
+		width: rem(16);
+		height: rem(16);
+		font-size: rem(12);
+	}
 }

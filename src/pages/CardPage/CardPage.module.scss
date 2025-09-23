@@ -6,6 +6,10 @@
 .card {
 	display: flex;
 	gap: rem(20);
+	@media (max-width: $tablet) {
+		flex-direction: column;
+		gap: rem(10);
+	}
 }
 .content {
 	flex: 1 1 auto;
@@ -14,6 +18,12 @@
 	background-color: $greyColor;
 	border-radius: rem(12);
 	padding: rem(30) rem(15);
+	@media (max-width: $tablet) {
+		padding: rem(20);
+	}
+	@media (max-width: $mobile) {
+		padding: rem(15);
+	}
 }
 .image {
 	@include ibg;
@@ -21,13 +31,20 @@
 	overflow: hidden;
 	padding-bottom: percent(500, 1000);
 	margin-top: rem(20);
+	@media (max-width: $mobile) {
+		min-height: rem(300);
+	}
 }
 .info {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	flex-wrap: wrap;
 	gap: rem(20);
 	padding-top: rem(30);
+	@media (max-width: $mobile) {
+		gap: rem(10);
+	}
 }
 .item {
 	display: flex;
@@ -41,6 +58,13 @@
 	flex-direction: column;
 	gap: rem(20);
 	flex: 0 0 rem(320);
+	@media (max-width: $pc) {
+		flex: 0 0 rem(280);
+	}
+	@media (max-width: $tablet) {
+		flex: auto;
+		gap: rem(10);
+	}
 }
 .block {
 	display: flex;
@@ -58,6 +82,13 @@
 	display: flex;
 	flex-direction: column;
 	gap: rem(10);
+	@media (max-width: $tablet) {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@media (max-width: $mobileSmall) {
+		grid-template-columns: repeat(1, 1fr);
+	}
 }
 .avatar {
 	@include ibg;

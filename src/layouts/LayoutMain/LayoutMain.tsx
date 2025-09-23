@@ -1,3 +1,4 @@
+import { Footer } from '@/components/Footer/Footer'
 import { Header } from '@/components/Header/Header'
 import { Modal } from '@/components/Modal/Modal'
 import { RootState } from '@/store/store'
@@ -14,6 +15,7 @@ export const Layout = () => {
 					<Outlet />
 				</div>
 			</main>
+			<Footer />
 			<Modal active={isOpen} message={message} />
 		</div>
 	)

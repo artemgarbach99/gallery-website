@@ -1,0 +1,23 @@
+@use '@assets/styles/_variables.scss' as *;
+@use '@assets/styles/global.module.scss' as *;
+
+.footer {
+	background-color: $greyColor;
+	margin-top: 20px;
+}
+
+.body {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 20px 0;
+	@media (max-width: $mobileSmall) {
+		flex-direction: column;
+		gap: 5px;
+	}
+}
+
+.item {
+	@extend .h6;
+	color: $boxShadowColor;
+}

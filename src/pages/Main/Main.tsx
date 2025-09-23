@@ -29,16 +29,14 @@ export const Main = () => {
 	// )
 	return (
 		<div className={main.main}>
-			<div className='container'>
-				{/* Welcome {email} */}
-				{/* <button onClick={() => dispatch(userActions.removeUser())}>log out</button> */}
-				<div className={main.section}>
-					<TopSectionCards />
-					<Slider />
-				</div>
-				<Posts />
-				<PostsShowmore />
+			{/* Welcome {email} */}
+			{/* <button onClick={() => dispatch(userActions.removeUser())}>log out</button> */}
+			<div className={main.section}>
+				<TopSectionCards />
+				<Slider />
 			</div>
+			<Posts />
+			<PostsShowmore />
 		</div>
 	)
 }

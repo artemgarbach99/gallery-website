@@ -1,10 +1,38 @@
 @use '@assets/styles/_mixins.scss' as *;
+@use '@assets/styles/_variables.scss' as *;
+@use '@assets/styles/_main.sass' as *;
+
+.heading {
+	font-size: rem(20);
+	line-height: 1.2;
+	font-weight: 700;
+	text-transform: uppercase;
+	@media (max-width: $pc) {
+		font-size: rem(18);
+	}
+	@media (max-width: $mobile) {
+		font-size: rem(16);
+	}
+}
 
 .list {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-	gap: 20px;
+	gap: rem(20);
 	padding-top: 30px;
+	@media (max-width: $tablet) {
+		grid-template-columns: repeat(3, 1fr);
+		gap: rem(10);
+	}
+	@media (max-width: $mobile) {
+		padding-top: 20px;
+	}
+	@media (max-width: rem(650)) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@media (max-width: rem(520)) {
+		grid-template-columns: repeat(1, 1fr);
+	}
 }
 .bottom {
 	display: flex;

@@ -1,5 +1,7 @@
 @use '/src/assets/styles/_mixins.scss' as *;
 @use '/src//assets/styles/variables' as *;
+@use '@assets/styles/_main.sass' as *;
+
 .top {
 	display: flex;
 	flex-direction: column;
@@ -7,17 +9,25 @@
 	background-color: $greyColor;
 	border-radius: 12px;
 	padding: 30px;
+	@media (max-width: $tablet) {
+		padding: rem(20);
+	}
+	@media (max-width: $mobileSmall) {
+		padding: rem(20) rem(10);
+	}
 }
 .banner {
+	@include ibg;
 	background-color: $greenColor;
-	border-radius: 12px;
+	border-radius: 6px;
 	overflow: hidden;
-	height: 400px;
-	& img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
+	padding-bottom: percent(400, 1240);
+	// height: 400px;
+	// & img {
+	// 	width: 100%;
+	// 	height: 100%;
+	// 	object-fit: cover;
+	// }
 }
 .avatar {
 	display: flex;
@@ -36,12 +46,29 @@
 		height: 100%;
 		object-fit: cover;
 	}
+	@media (max-width: $pc) {
+		width: rem(60);
+		height: rem(60);
+		flex: 0 0 rem(60);
+	}
 }
 .row {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	gap: 20px;
+	@media (max-width: $mobile) {
+		flex-direction: column;
+	}
+}
+.line {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: rem(20);
+	@media (max-width: $mobile) {
+		width: 100%;
+	}
 }
 .block {
 	display: flex;
@@ -62,6 +89,18 @@
 	display: flex;
 	align-items: center;
 	gap: 5px;
+	@media (max-width: $mobile) {
+		display: none;
+	}
+}
+.editMob {
+	@include button(transparent, $redColor, 12px);
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	@media (min-width: $mobile) {
+		display: none;
+	}
 }
 .menu {
 	display: flex;
@@ -75,10 +114,24 @@
 	cursor: pointer;
 }
 .content {
-	padding: 40px 0;
+	padding-top: rem(40);
+	@media (max-width: $mobile) {
+		padding-top: rem(20);
+	}
 }
 .list {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 20px;
+	@include listGrid;
+	// display: grid;
+	// grid-template-columns: repeat(4, 1fr);
+	// gap: 20px;
+	// @media (max-width: $tablet) {
+	// 	grid-template-columns: repeat(3, 1fr);
+	// 	gap: 10px;
+	// }
+	// @media (max-width: rem(650)) {
+	// 	grid-template-columns: repeat(2, 1fr);
+	// }
+	// @media (max-width: rem(520)) {
+	// 	grid-template-columns: repeat(1, 1fr);
+	// }
 }

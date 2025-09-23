@@ -64,15 +64,20 @@ export const UserPage = () => {
 				</div>
 				<div className={userStyles.row}>
 					{user && (
-						<div className={userStyles.avatar}>
-							<div className={userStyles.image}>
-								<img src={user.photoURL ?? ''} alt='User Profile' />
+						<div className={userStyles.line}>
+							<div className={userStyles.avatar}>
+								<div className={userStyles.image}>
+									<img src={user.photoURL ?? ''} alt='User Profile' />
+								</div>
+								<div className={userStyles.block}>
+									<div className={userStyles.name}>{user.displayName}</div>
+									<div className={userStyles.email}>{email}</div>
+									{/* <div>{userData ? <div>{userData.customProperty}</div> : <div>Загрузка данных...</div>}</div> */}
+								</div>
 							</div>
-							<div className={userStyles.block}>
-								<div className={userStyles.name}>{user.displayName}</div>
-								<div className={userStyles.email}>{email}</div>
-								{/* <div>{userData ? <div>{userData.customProperty}</div> : <div>Загрузка данных...</div>}</div> */}
-							</div>
+							<Link className={userStyles.editMob} to={'/profile-edit'}>
+								<FaUserEdit size={16} />
+							</Link>
 						</div>
 					)}
 					<TabList className={userStyles.menu}>

@@ -27,14 +27,25 @@
 	padding: rem(15);
 	background-color: rgba($whiteColor, 0.75);
 	border-radius: rem(12);
+	@media (max-width: $pc) {
+		padding: rem(10);
+		gap: rem(5);
+	}
 }
 .image {
 	@include ibg;
 	padding-bottom: percent(450, 310);
+	@media (max-width: $mobile) {
+		padding-bottom: percent(250, 360);
+	}
 }
 .imageSlide {
 	@include ibg;
 	padding-bottom: percent(450, 640);
+	@media (max-width: $mobile) {
+		padding-bottom: percent(400, 720);
+		min-height: rem(300);
+	}
 }
 .title {
 	display: -webkit-box;

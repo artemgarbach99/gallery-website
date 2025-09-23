@@ -43,11 +43,24 @@
 	padding: rem(14);
 	background-color: $greyColor;
 	border-radius: rem(12);
+	@media (max-width: $pc) {
+		padding: rem(7);
+	}
+	// @media (max-width: $mobile) {
+	// 	flex-direction: column;
+	// 	align-items: flex-start;
+	// 	gap: rem(5);
+	// }
 }
 .wrap {
 	display: flex;
 	align-items: center;
 	gap: rem(10);
+	// @media (max-width: $mobile) {
+	// 	flex-direction: column;
+	// 	align-items: flex-start;
+	// 	gap: rem(5);
+	// }
 }
 .icon {
 	flex: 0 0 rem(44);
@@ -75,6 +88,9 @@
 	font-size: rem(12);
 	line-height: 1.2;
 	color: rgba($blackColor, 0.7);
+	@media (max-width: $mobile) {
+		display: none;
+	}
 }
 .favorite {
 	color: rgba($blackColor, 0.5);

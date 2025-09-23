@@ -4,9 +4,18 @@
 
 .cards {
 	width: 50%;
+	@media (max-width: $mobile) {
+		width: 100%;
+	}
+	@media (max-width: rem(520)) {
+		display: none;
+	}
 }
 .list {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: rem(20);
+	@media (max-width: $tablet) {
+		gap: rem(10);
+	}
 }

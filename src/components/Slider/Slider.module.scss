@@ -8,6 +8,9 @@
 	border-radius: rem(12);
 	overflow: hidden;
 	position: relative;
+	@media (max-width: $mobile) {
+		width: 100%;
+	}
 }
 
 .sliderCards {

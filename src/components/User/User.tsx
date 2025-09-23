@@ -31,7 +31,9 @@ export const User = () => {
 						<img src={userFarebase.photoURL ?? undefined} alt='User Profile' />
 					</Link>
 				) : (
-					<FaUserAlt size={24} />
+					<Link to={'/login'}>
+						<FaUserAlt size={24} />
+					</Link>
 				)}
 			</div>
 			{isAuth && userFarebase ? (
@@ -58,14 +60,9 @@ export const User = () => {
 					)}
 				</div>
 			) : (
-				<div className={user.links}>
-					<Link to={'/login'} className={user.name}>
-						login
-					</Link>
-					{/* <Link to={'/register'} className={user.name}>
-						register
-					</Link> */}
-				</div>
+				<Link to={'/login'} className={user.name}>
+					login
+				</Link>
 			)}
 		</div>
 	)

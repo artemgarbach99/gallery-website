@@ -1,10 +1,12 @@
 @use '/src/assets/styles/global.module.scss' as *;
 @use '/src/assets/styles/variables' as *;
+@use '/src/assets/styles/_mixins.scss' as *;
 
 .list {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 20px;
+	@include listGrid;
+	// display: grid;
+	// grid-template-columns: repeat(4, 1fr);
+	// gap: 20px;
 }
 .info {
 	@extend .h5;

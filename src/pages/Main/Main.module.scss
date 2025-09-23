@@ -1,6 +1,15 @@
 @use '@assets/styles/_main.sass' as *;
+@use '@assets/styles/_variables.scss' as *;
+
 .section {
 	display: flex;
 	gap: rem(20);
 	padding-top: rem(40);
+	@media (max-width: $tablet) {
+		gap: rem(10);
+	}
+	@media (max-width: $mobile) {
+		flex-direction: column-reverse;
+		padding-top: rem(30);
+	}
 }

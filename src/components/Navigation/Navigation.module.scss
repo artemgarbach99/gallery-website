@@ -1,4 +1,5 @@
 @use '@assets/styles/_main.sass' as *;
+@use '@assets/styles/_variables.scss' as *;
 
 .menu {
 	display: flex;
@@ -7,5 +8,17 @@
 	& a {
 		font-weight: 700;
 		text-transform: uppercase;
+		@media (max-width: $bigTablet) {
+			font-size: rem(12);
+		}
+	}
+	@media (max-width: $pc) {
+		gap: rem(15);
+	}
+	@media (max-width: $bigTablet) {
+		gap: rem(10);
+	}
+	@media (max-width: $tablet) {
+		display: none;
 	}
 }

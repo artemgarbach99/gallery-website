@@ -1,10 +1,25 @@
 @use '/src/assets/styles/_mixins.scss' as *;
-@use '/src/assets/styles/main' as *;
+@use '@assets/styles/_main.sass' as *;
+@use '/src//assets/styles/variables' as *;
+
+.body {
+	display: flex;
+	flex-direction: column;
+}
 
 .list {
 	display: grid;
 	gap: rem(20);
 	grid-template-columns: repeat(2, 1fr);
+	@media (max-width: $tablet) {
+		gap: rem(15);
+	}
+	@media (max-width: $mobile) {
+		gap: rem(10);
+	}
+	@media (max-width: $mobileSmall) {
+		grid-template-columns: repeat(1, 1fr);
+	}
 }
 .item {
 	display: flex;
@@ -18,6 +33,8 @@
 	@include button;
 	display: flex;
 	align-items: center;
+	align-self: center;
 	gap: rem(10);
 	margin-top: rem(20);
+	padding: rem(12) rem(20);
 }

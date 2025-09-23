@@ -4,6 +4,9 @@
 
 .wrap {
 	padding-top: rem(60);
+	@media (max-width: $pc) {
+		padding-top: rem(40);
+	}
 }
 .top {
 	display: flex;
@@ -16,7 +19,14 @@
 	gap: rem(10);
 }
 .title {
-	font-family: $Jura;
+	font-size: rem(20);
+	line-height: 1.2;
 	font-weight: 700;
 	text-transform: uppercase;
+	@media (max-width: $pc) {
+		font-size: rem(18);
+	}
+	@media (max-width: $mobile) {
+		font-size: rem(16);
+	}
 }

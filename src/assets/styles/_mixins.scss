@@ -26,11 +26,25 @@
 		font-weight: 500;
 		font-size: 18px;
 		background-color: $greyColor;
+		@media (max-width: $pc) {
+			padding: rem(10);
+			font-size: rem(14);
+		}
+		@media (max-width: $mobile) {
+			padding: rem(8) rem(10);
+			font-size: rem(12);
+		}
 
 		&::placeholder {
 			color: rgba($blackColor, 0.5);
 			font-size: 16px;
 			font-family: $fontFamily;
+			@media (max-width: $pc) {
+				font-size: rem(14);
+			}
+			@media (max-width: $mobile) {
+				font-size: rem(12);
+			}
 		}
 
 		&:focus {
@@ -69,6 +83,10 @@
 	background-color: $whiteColor;
 	border-radius: rem(12);
 	color: $blackColor;
+	@media (max-width: $pc) {
+		width: rem(36);
+		height: rem(36);
+	}
 }
 
 @mixin scrollbar {
@@ -101,4 +119,22 @@
 	font-size: $fz;
 	text-transform: uppercase;
 	background-color: $bg;
+	@media (max-width: $pc) {
+		padding: rem(8) rem(10);
+	}
+}
+@mixin listGrid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 20px;
+	@media (max-width: $tablet) {
+		grid-template-columns: repeat(3, 1fr);
+		gap: 10px;
+	}
+	@media (max-width: rem(650)) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@media (max-width: rem(520)) {
+		grid-template-columns: repeat(1, 1fr);
+	}
 }

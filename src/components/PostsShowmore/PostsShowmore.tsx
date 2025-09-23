@@ -17,7 +17,7 @@ export const PostsShowmore = () => {
 
 	return (
 		<div className={posts.wrap}>
-			<div className={global.h4}>All Posts</div>
+			<div className={styles.heading}>All Posts</div>
 			<div className={styles.list}>
 				{images
 					.slice(0, visibleItems)

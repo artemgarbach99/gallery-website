@@ -8,16 +8,25 @@
 	align-items: center;
 	gap: rem(10);
 	padding: rem(25) 0;
+	@media (max-width: $mobile) {
+		gap: rem(5);
+	}
 }
 .item {
 	display: flex;
 	align-items: center;
 	gap: rem(10);
+	@media (max-width: $mobile) {
+		gap: rem(5);
+	}
 }
 .link {
 	color: $blackColor;
 	line-height: 1;
 	&.active {
 		color: rgba($blackColor, 0.5);
+	}
+	@media (max-width: $mobile) {
+		font-size: rem(11);
 	}
 }

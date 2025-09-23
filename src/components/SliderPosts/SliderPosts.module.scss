@@ -5,6 +5,9 @@
 .wrapper {
 	padding-top: rem(30);
 	position: relative;
+	@media (max-width: $pc) {
+		padding-top: rem(20);
+	}
 }
 .prevButton,
 .nextButton {

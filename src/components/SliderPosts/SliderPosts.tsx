@@ -23,6 +23,12 @@ export const SliderPosts = () => {
 				modules={[Virtual, Navigation, Pagination]}
 				spaceBetween={20}
 				slidesPerView={4}
+				breakpoints={{
+					320: { slidesPerView: 1 },
+					520: { slidesPerView: 2 },
+					650: { slidesPerView: 3, spaceBetween: 10 },
+					992: { slidesPerView: 4, spaceBetween: 20 }
+				}}
 				// autoHeight={true}
 				className={sliderPostsStyles.sliderPosts}
 				navigation={{ prevEl: `.${sliderPostsStyles.prevButton}`, nextEl: `.${sliderPostsStyles.nextButton}` }}>
